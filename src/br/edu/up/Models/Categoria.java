@@ -22,4 +22,14 @@ public enum Categoria {
     public String getDescricao() {
         return descricao;
     }
+
+    public static Categoria descricaoCategoria(String descricao){
+        for (Categoria categoria : Categoria.values()) {
+            if (categoria.getDescricao().equalsIgnoreCase(descricao)) {
+                return categoria;
+            }
+        }
+        throw new IllegalArgumentException("Categoria não encontrada para Descricao " + descricao);
+    }
+
 }

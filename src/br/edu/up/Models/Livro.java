@@ -15,15 +15,18 @@ public class Livro{
         this.categoria = categoria;
     }
 
+    
+
     @Override
-    public String toString(){
-        return "Livro ->" +
-                "codigo:" + codigo +
-                ", titulo:'" + titulo + '\'' +
-                ", isbn:'" + isbn + '\'' +
-                ", ano:" + ano +
-                ", categoria:" + categoria.getDescricao() +
-                '}';
+    public String toString() {
+        return "Livro [codigo=" + codigo + ", titulo=" + titulo + ", isbn=" + isbn + ", ano=" + ano + ", categoria="
+                + categoria + "]";
+    }
+
+
+
+    public String toCsv(){
+        return  codigo +";"+ titulo+";" +isbn+";"+ ano+";"+ categoria.getDescricao();
     }
 
     public String getCodigo() {
