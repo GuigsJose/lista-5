@@ -7,6 +7,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -51,5 +52,28 @@ public class LivroDAO {
             System.out.println("Arquivo não encontrado! " + e.getMessage());
         }
         return listaDeLivros;
+    }
+
+    public boolean adicionarLivro(List<Livro> livros){
+
+        try{
+
+            FileWriter salvaArquivo = new FileWriter(arquivo);
+            PrintWriter salvar = new PrintWriter(salvaArquivo);
+
+            salvar.println(header);
+
+            for (Livro livro : livros) {
+                salvar.println(livro.toCsv());
+            }
+            salvar.close();
+
+            return true;
+
+
+        }catch(IOException e){
+            System.out.println("Não foi possivel gravar o arquivo");
+        }
+        return false;
     }
 }
