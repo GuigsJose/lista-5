@@ -22,7 +22,7 @@ public enum Categoria {
     public String getDescricao() {
         return descricao;
     }
-
+    //básicamente converte uma descrição que é uma String, no enum correspondente
     public static Categoria descricaoCategoria(String descricao){
         for (Categoria categoria : Categoria.values()) {
             if (categoria.getDescricao().equalsIgnoreCase(descricao)) {
