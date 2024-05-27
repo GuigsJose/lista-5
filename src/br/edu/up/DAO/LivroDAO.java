@@ -16,9 +16,12 @@ import br.edu.up.Models.Categoria;
 import br.edu.up.Models.Livro;
 
 public class LivroDAO {
+
+    //TODO CRUD para manipulação do arquivo CSV
     private String header = "";
     private String arquivo = "C:\\Java-Project\\lista-05\\Biblioteca\\src\\br\\edu\\up\\DAO\\Livros.csv";
 
+    // READ
     public List<Livro> listarLivros(){
         List<Livro> listaDeLivros = new ArrayList<>();
 
@@ -54,6 +57,7 @@ public class LivroDAO {
         return listaDeLivros;
     }
 
+    //CREATE
     public boolean adicionarLivro(List<Livro> livros){
 
         try{
@@ -76,4 +80,27 @@ public class LivroDAO {
         }
         return false;
     }
+
+    //UPDATE
+    public boolean atualizarLivro(Livro livro){
+        List<Livro> livros = listarLivros();
+        boolean encontrado = false;
+
+        for (int i = 0; i < livros.size(); i++) {
+            Livro l = livros.get(i);  
+            if (livro.getCodigo().equals(livro.getCodigo())) {
+                livros.set(i, livro);
+                encontrado = true;
+                break;
+            }
+        }
+
+        if (encontrado) {
+            return adicionarLivro(livros);
+        }else{
+            System.out.println("Codigo não encontrado: " + livro.getCodigo());
+            return false;
+        }
+    }
+    
 }
