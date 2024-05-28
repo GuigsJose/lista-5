@@ -1,7 +1,10 @@
 package br.edu.up;
 
+import br.edu.up.Views.TelaPrincipal;
+
 public class App {
     public static void main(String[] args) throws Exception {
-        System.out.println("Hello, World!");
+        TelaPrincipal tela = new TelaPrincipal();
+        tela.mostrar();
     }
 }
