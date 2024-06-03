@@ -53,4 +53,14 @@ public class LivroController {
         }
     }
 
+    //delete
+    public void deletarLivro(String codigo){
+        boolean deletado = daos.deletarLivro(codigo);
+        if (deletado) {
+            System.out.println("Livro deletado com sucesso");
+        }else{
+            System.out.println("Código não encontrado: " + codigo);
+        }
+    }
+
 }
