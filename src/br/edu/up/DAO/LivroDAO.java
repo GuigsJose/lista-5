@@ -1,4 +1,4 @@
-package br.edu.up.DAO.br.edu.up.DAO;
+package br.edu.up.DAO;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
