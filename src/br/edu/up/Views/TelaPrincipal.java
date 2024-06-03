@@ -2,13 +2,13 @@ package br.edu.up.Views;
 
 import java.util.Scanner;
 
-import br.edu.up.Controllers.ControleLivro;
+import br.edu.up.Controllers.LivroController;
 import br.edu.up.Models.Categoria;
 import br.edu.up.Models.Livro;
 
 public class TelaPrincipal {
 
-    ControleLivro controleLivro = new ControleLivro();
+    LivroController controleLivro = new LivroController();
 
     public void menu() {
         /* Luis: Opções do Menu */
@@ -22,9 +22,10 @@ public class TelaPrincipal {
     }
 
     public void mostrar() {
-        /* Luis: Menu 
+        /*
+         * Luis: Menu
          * ESSA WHILE VAMOS MODIFICANDO CONFORME A NECESSIDADE
-        */
+         */
         Scanner leitor = new Scanner(System.in);
         while (true) {
             menu();
@@ -32,7 +33,10 @@ public class TelaPrincipal {
 
             switch (op) {
                 case "1":
-                        incluirLivro();
+                    System.out.println("----------------------------");
+                    System.out.println("      ADICIONAR LIVRO");
+                    System.out.println("----------------------------");
+                    incluirLivro();
 
                     break;
                 case "2":
@@ -64,9 +68,7 @@ public class TelaPrincipal {
     public void incluirLivro() {
         /* Luis: Incluir Livro */
         Scanner leitor = new Scanner(System.in);
-        System.out.println("----------------------------");
-        System.out.println("      ADICIONAR LIVRO");
-        System.out.println("----------------------------");
+
         System.out.println("Digite o Código do livro: ");
         String codigo = leitor.nextLine();
 
@@ -80,16 +82,26 @@ public class TelaPrincipal {
         int ano = leitor.nextInt();
 
         System.out.println("Digite a categoria do livro: ");
-        String categoria = leitor.nextLine();
-
-        /*Luis:
-        Não estou conseguido finalizar esse final 
-        Não consigo chamar a categoria */
-        // Livro livro = new Livro(codigo, titulo, isbn, ano, Livro.getCategoria());
-        // controleLivro.incluirLivro(livro);
-
-
+        String c = leitor.nextLine();
+        Categoria _categoria = Categoria.descricaoCategoria(c);
         
+
+        /*
+         * Luis:
+         * Não estou conseguido finalizar esse final
+         * Não consigo chamar a categoria
+         */
+        Livro livro = new Livro(codigo, titulo, isbn, ano, _categoria); 
+        controleLivro.incluirLivro(livro);
+
+    }
+
+    public void atualizar(){
+        Scanner leitor = new Scanner(System.in);
+
+        System.out.println("Digite o Código do livro: ");
+        String codigo = leitor.nextLine();
+
 
     }
 }
