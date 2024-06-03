@@ -32,4 +32,25 @@ public class LivroController {
             System.out.println("Categoria inválida: " + categoriaDescricao);
         }
     }
+
+    //Listar livros
+    public List<Livro> listarLivros(){
+        return daos.listarLivros();
+    }
+
+    //atualizar
+    public void atualizarLivro(String codigo, String novoTitulo, String novoIsbn, int novoAno, String novaCategoria){
+        try{
+            Categoria categoria = Categoria.descricaoCategoria(novaCategoria);
+            Livro novoLivro = new Livro(codigo, novoTitulo, novoIsbn, novoAno, categoria);
+            boolean atualizado = daos.atualizarLivro(novoLivro);
+            if (atualizado) {
+                //[bizu] coloquei um sysout pra verificação
+                System.out.println("Livro Atualizado com sucesso!");
+            }
+        }catch(IllegalArgumentException e){
+            System.out.println("Categoria inválida: " + novaCategoria);
+        }
+    }
+
 }
