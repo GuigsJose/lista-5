@@ -4,7 +4,7 @@ public class ControleLivro {
     /*LUIS:
      * APENAS NÃO FIZ O MÉTODO, APENOS O CRIEI
      */
-    public void incluirLivro(){
+    public void incluirLivro(Livro livro){
 
     }
 }
