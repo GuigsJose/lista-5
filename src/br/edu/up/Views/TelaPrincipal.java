@@ -2,13 +2,13 @@ package br.edu.up.Views;
 
 import java.util.Scanner;
 
-import br.edu.up.Controllers.ControleLivro;
+import br.edu.up.Controllers.LivroController;
 import br.edu.up.Models.Categoria;
 import br.edu.up.Models.Livro;
 
 public class TelaPrincipal {
 
-    ControleLivro controleLivro = new ControleLivro();
+    LivroController controleLivro = new LivroController();
 
     public void menu() {
         /* Luis: Opções do Menu */
