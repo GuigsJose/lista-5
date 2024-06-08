@@ -20,18 +20,33 @@ public class TelaPrincipal {
         System.out.print("Escolha uma opção: ");
     }
 
+    public void menuLivro() {
+        /* Luis: Opções do Menu Livro */
+        
+    }
+
+    public void menuFilme() {
+    }
+
+    public void menuJogo() {
+    }
+
     public void mostrar() {
-        /* Luis: Menu 
+        /*
+         * Luis: Menu
          * ESSA WHILE VAMOS MODIFICANDO CONFORME A NECESSIDADE
-        */
+         */
         Scanner leitor = new Scanner(System.in);
         while (true) {
-            menuPrinciapl();
-            String op = leitor.nextLine();
+            menuLivro();
+            String opL = leitor.nextLine();
 
-            switch (op) {
+            switch (opL) {
                 case "1":
-                        incluirLivro();
+                    System.out.println("----------------------------");
+                    System.out.println("      ADICIONAR LIVRO");
+                    System.out.println("----------------------------");
+                    incluirLivro();
 
                     break;
                 case "2":
@@ -63,9 +78,6 @@ public class TelaPrincipal {
     public void incluirLivro() {
         /* Luis: Incluir Livro */
         Scanner leitor = new Scanner(System.in);
-        System.out.println("----------------------------");
-        System.out.println("      ADICIONAR LIVRO");
-        System.out.println("----------------------------");
         System.out.println("Digite o Código do livro: ");
         String codigo = leitor.nextLine();
 
@@ -81,14 +93,13 @@ public class TelaPrincipal {
         System.out.println("Digite a categoria do livro: ");
         String categoria = leitor.nextLine();
 
-        /*Luis:
-        Não estou conseguido finalizar esse final 
-        Não consigo chamar a categoria */
+        /*
+         * Luis:
+         * Não estou conseguido finalizar esse final
+         * Não consigo chamar a categoria
+         */
         // Livro livro = new Livro(codigo, titulo, isbn, ano, Livro.getCategoria());
         // controleLivro.incluirLivro(livro);
-
-
-        
 
     }
 }
