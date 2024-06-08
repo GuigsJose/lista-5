@@ -40,13 +40,13 @@ public class FilmeDAO {
                 if (id != null && !id.equals("")) {
                     String nome = dados[1];
                     String genero = dados[2];
-                    String diretor(dados[3]);
+                    String diretor = (dados[3]);
                     int anoLancamento = Integer.parseInt(dados[4]);
                     //aqui transforma o enum numa string, e passa a posição correspondente no array
                     //de dados no csv
                     
 
-                    Filme filme = new Livro(id, nome, genero, diretor, anoLancamento);
+                    Filme filme = new Filme(id, nome, genero, diretor, anoLancamento);
                     listaDeFilmes.add(filme);
                 }    
             }
@@ -60,7 +60,7 @@ public class FilmeDAO {
     }
 
     //CREATE
-    public boolean adicionarLivro(List<Livro> livros){
+    public boolean adicionarFilme(List<Filme> filmes){
 
         try{
 
@@ -69,8 +69,8 @@ public class FilmeDAO {
 
             salvar.println(header);
 
-            for (Livro livro : livros) {
-                salvar.println(livro.toCsv());
+            for (Filme filme : filmes) {
+                salvar.println(filme.toCsv());
             }
             salvar.close();
 
@@ -84,48 +84,48 @@ public class FilmeDAO {
     }
 
     //UPDATE
-    public boolean atualizarLivro(Livro livro){
-        List<Livro> livros = listarLivros();
+    public boolean atualizarLivro(Filme filme){
+        List<Filme> filmes = listarFilmes();
         boolean encontrado = false;
 
-        for (int i = 0; i < livros.size(); i++) {
-            Livro l = livros.get(i);  
-            if (livro.getCodigo().equals(livro.getCodigo())) {
-                livros.set(i, livro);
+        for (int i = 0; i < filmes.size(); i++) {
+            Filme f = filmes.get(i);  
+            if (filme.getId().equals(filme.getId())) {
+                filmes.set(i, filme);
                 encontrado = true;
                 break;
             }
         }
 
         if (encontrado) {
-            return adicionarLivro(livros);
+            return adicionarFilme(filmes);
         }else{
-            System.out.println("Codigo não encontrado: " + livro.getCodigo());
+            System.out.println("id não encontrado: " + filme.getId());
             return false;
         }
     }
 
     //DELETE
-    public boolean deletarLivro(String codigo){
-        List<Livro> livros = listarLivros();
+    public boolean deletarLivro(String id){
+        List<Filme> filmes = listarFilmes();
         boolean encontrado = false;
 
-        for (int i = 0; i < livros.size(); i++) {
-            Livro livro = livros.get(i);
-            if (livro.getCodigo().equals(codigo)) {
-                livros.remove(i);
+        for (int i = 0; i < filmes.size(); i++) {
+            Filme filme = filmes.get(i);
+            if (filme.getId().equals(id)) {
+                filmes.remove(i);
                 encontrado = true;
                 break;
             }
         }
 
-        // rapazes, não achem estranho esse adicionarLivro(livros)
-        // básicamente ele encontra o livro ali, deleta o livro(passando o código equivalente)
-        // e retorna o adicionarLivro, pq ele atualiza a tabela de livros do arquivo csv
+        // rapazes, não achem estranho esse adicionarfilme(filmes)
+        // básicamente ele encontra o filme ali, deleta o filme(passando o id equivalente)
+        // e retorna o adicionarfilme, pq ele atualiza a tabela de filmes do arquivo csv
         if (encontrado) {
-            return(adicionarLivro(livros));
+            return(adicionarFilme(filmes));
         }else{
-            System.out.println("Código não encontrado: " + codigo);
+            System.out.println("Código não encontrado: " + id);
             return false;
         }
     }
