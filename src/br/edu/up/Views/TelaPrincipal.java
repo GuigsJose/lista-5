@@ -10,14 +10,13 @@ public class TelaPrincipal {
 
     LivroController controleLivro = new LivroController();
 
-    public void menu() {
+    public void menuPrinciapl() {
         /* Luis: Opções do Menu */
         System.out.println("** Bem-Vindo ao Terminal **");
-        System.out.println("1. Adicionar Livro");
-        System.out.println("2. Atualizar Livro");
-        System.out.println("3. Listar Livros");
-        System.out.println("4. Deletar Livro");
-        System.out.println("5. Sair");
+        System.out.println("1. Livro");
+        System.out.println("2. Filme");
+        System.out.println("3. Jogo");
+        System.out.println("4. Sair");
         System.out.print("Escolha uma opção: ");
     }
 
@@ -27,7 +26,7 @@ public class TelaPrincipal {
         */
         Scanner leitor = new Scanner(System.in);
         while (true) {
-            menu();
+            menuPrinciapl();
             String op = leitor.nextLine();
 
             switch (op) {

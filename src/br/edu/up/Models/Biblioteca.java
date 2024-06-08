@@ -3,10 +3,12 @@ package br.edu.up.Models;
 public class Biblioteca {
     public String id;
     public String nome;
+    public String genero;
 
-    public Biblioteca(String id, String nome) {
+    public Biblioteca(String id, String nome, String genero) {
         this.id = id;
         this.nome = nome;
+        this.genero = genero;
     }
 
     public String getId() {
