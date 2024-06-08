@@ -44,7 +44,7 @@ public class Filme extends Biblioteca{
     }
 
     public String toCsv(){
-        return id + "," + nome + "," + genero + "," + diretor + "," + ", anoLancamento= " + anoLancamento + ".";
+        return id + "," + nome + "," + genero + "," + diretor + "," + anoLancamento;
     }
     
 }
