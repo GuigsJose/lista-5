@@ -8,6 +8,10 @@ import br.edu.up.Models.Livro;
 
 public class TelaPrincipal {
 
+      
+    /* @author João: precisamos juntar o que forem terminando nessa View,
+    creio eu não ser necessário outra view.*/ 
+
     LivroController controleLivro = new LivroController();
 
     public void menuPrinciapl() {

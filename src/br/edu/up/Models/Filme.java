@@ -1,7 +1,8 @@
 package br.edu.up.Models;
 
 public class Filme extends Biblioteca{
-
+    // @athor João: foi craida a model como classe mais baixam da Biblioteca.
+    
     public String genero;
 
     public String diretor;
