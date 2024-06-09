@@ -3,7 +3,7 @@ package br.edu.up.Models;
 public class Livro{
     /* @athor João: precisa encaixar a Livro para fazer parte de bilbioteca.
      utilizar ID em vez de código e genero em vez de categoria ( abrange mais coisas do que apenas livros)  
-     - obs: não alterei para não fazer cagada, mas ser quiser eu altero. */
+     - obs: não alterei para não fazer cagada, mas ser quiser eu altero. CMO*/
 
     public String codigo;
     public String titulo;
