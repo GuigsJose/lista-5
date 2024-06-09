@@ -1,11 +1,11 @@
 package br.edu.up.Controllers;
 
 import java.util.List;
-
 import br.edu.up.DAO.JogoDAO;
 import br.edu.up.Models.Jogo;
 
 public class JogoController {
+    
     private JogoDAO daos = new JogoDAO();
     private List<Jogo> jogos;
 

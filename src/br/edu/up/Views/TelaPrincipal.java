@@ -8,9 +8,10 @@ import br.edu.up.Models.Livro;
 
 public class TelaPrincipal {
 
-      
-    /* @author João: precisamos juntar o que forem terminando nessa View,
-    creio eu não ser necessário outra view.*/ 
+    /*
+     * @author João: precisamos juntar o que forem terminando nessa View,
+     * creio eu não ser necessário outra view.
+     */
 
     LivroController controleLivro = new LivroController();
 
@@ -24,18 +25,44 @@ public class TelaPrincipal {
         System.out.print("Escolha uma opção: ");
     }
 
-    public void menuLivro() {
-        /* Luis: Opções do Menu Livro */
-        
-    }
-
-    public void menuFilme() {
-    }
-
-    public void menuJogo() {
-    }
-
     public void mostrar() {
+        Scanner leitor = new Scanner(System.in);
+        while (true) {
+            menuPrinciapl();
+            String opcao = leitor.nextLine();
+
+            switch (opcao) {
+                case "1":
+                    menuLivro();
+                    break;
+                case "2":
+                    menuFilme();
+                    break;
+                case "3":
+                    menuJogo();
+                    break;
+                case "4":
+                    System.out.println("Saindo do sistema");
+                    leitor.close();
+                    return;
+                default:
+                    System.out.println("Opção inválida");
+                    break;
+            }
+        }
+    }
+
+    public void menuLivro() {
+        System.out.println("** Livro **");
+        System.out.println("1. Cadastrar Livro");
+        System.out.println("2. Atualizar Livro");
+        System.out.println("3. Listar Livros");
+        System.out.println("4. Deletar Livro");
+        System.out.println("5. Voltar ao Menu Principal");
+        System.out.println("6. Sair");
+    }
+
+    public void MostarmenuLivro() {
         /*
          * Luis: Menu
          * ESSA WHILE VAMOS MODIFICANDO CONFORME A NECESSIDADE
@@ -57,6 +84,7 @@ public class TelaPrincipal {
                     System.out.println("----------------------------");
                     System.out.println("     ATUALIZAR LIVRO");
                     System.out.println("----------------------------");
+
                     break;
                 case "3":
                     System.out.println("----------------------------");
@@ -70,6 +98,9 @@ public class TelaPrincipal {
                     System.out.println("----------------------------");
                     break;
                 case "5":
+                    menuPrinciapl();
+                    break;
+                case "6":
                     System.out.println("Saindo do sistema...");
                     leitor.close();
                     return;
@@ -106,4 +137,113 @@ public class TelaPrincipal {
         // controleLivro.incluirLivro(livro);
 
     }
+
+    public void menuFilme() {
+        System.out.println("** Filme **");
+        System.out.println("1. Cadastrar Filme");
+        System.out.println("2. Atualizar Filme");
+        System.out.println("3. Listar Filmes");
+        System.out.println("4. Deletar Filme");
+        System.out.println("5. Voltar ao Menu Principal");
+        System.out.println("6. Sair");
+    }
+
+    public void MostrarmenuFilme() {
+        Scanner leitor = new Scanner(System.in);
+        while (true) {
+            menuFilme();
+            String opF = leitor.nextLine();
+
+            switch (opF) {
+                case "1":
+                    System.out.println("----------------------------");
+                    System.out.println("      ADICIONAR FILME");
+                    System.out.println("----------------------------");
+                    
+
+                    break;
+                case "2":
+                    System.out.println("----------------------------");
+                    System.out.println("     ATUALIZAR FILME");
+                    System.out.println("----------------------------");
+
+                    break;
+                case "3":
+                    System.out.println("----------------------------");
+                    System.out.println("       LISTAR FILME");
+                    System.out.println("----------------------------");
+
+                    break;
+                case "4":
+                    System.out.println("----------------------------");
+                    System.out.println("      DELETAR FILMES");
+                    System.out.println("----------------------------");
+                    break;
+                case "5":
+                    menuPrinciapl();
+                    break;
+                case "6":
+                    System.out.println("Saindo do sistema...");
+                    leitor.close();
+                    return;
+                default:
+                    System.out.println("Opção inválida, Por gentileza escolha opção válida e tente novamente.");
+            }
+        }
+    }
+
+    public void menuJogo() {
+        System.out.println("** Jogo **");
+        System.out.println("1. Cadastrar Jogo");
+        System.out.println("2. Atualizar Jogo");
+        System.out.println("3. Listar Jogos");
+        System.out.println("4. Deletar Jogo");
+        System.out.println("5. Voltar ao Menu Principal");
+        System.out.println("6. Sair");
+    }
+
+    public void mostrarmenuJogo() {
+        Scanner leitor = new Scanner(System.in);
+        while (true) {
+            menuJogo();
+            String opJ = leitor.nextLine();
+
+            switch (opJ) {
+                case "1":
+                    System.out.println("----------------------------");
+                    System.out.println("      ADICIONAR JOGO");
+                    System.out.println("----------------------------");
+                
+
+                    break;
+                case "2":
+                    System.out.println("----------------------------");
+                    System.out.println("     ATUALIZAR JOGO");
+                    System.out.println("----------------------------");
+
+                    break;
+                case "3":
+                    System.out.println("----------------------------");
+                    System.out.println("       LISTAR JOGO");
+                    System.out.println("----------------------------");
+
+                    break;
+                case "4":
+                    System.out.println("----------------------------");
+                    System.out.println("      DELETAR JOGOS");
+                    System.out.println("----------------------------");
+                    break;
+                case "5":
+                    menuPrinciapl();
+                    break;
+                case "6":
+                    System.out.println("Saindo do sistema...");
+                    leitor.close();
+                    return;
+                default:
+                    System.out.println("Opção inválida, Por gentileza escolha opção válida e tente novamente.");
+            }
+        }
+    }
+
 }
