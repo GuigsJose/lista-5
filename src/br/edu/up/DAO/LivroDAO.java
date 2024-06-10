@@ -11,8 +11,6 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
-import br.edu.up.Models.Categoria;
 import br.edu.up.Models.Livro;
 
 
@@ -52,7 +50,7 @@ public class LivroDAO {
                     int ano = Integer.parseInt(dados[3]);
                     //aqui transforma o enum numa string, e passa a posição correspondente no array
                     //de dados no csv
-                    Categoria categoria = Categoria.descricaoCategoria(dados[4]);
+                    String categoria = dados[4];
 
                     Livro livro = new Livro(codigo, titulo, isbn, ano, categoria);
                     listaDeLivros.add(livro);

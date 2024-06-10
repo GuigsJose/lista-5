@@ -1,13 +1,17 @@
 package br.edu.up.Models;
 
 public class Livro{
+    /* @athor João: precisa encaixar a Livro para fazer parte de bilbioteca.
+     utilizar ID em vez de código e genero em vez de categoria ( abrange mais coisas do que apenas livros)  
+     - obs: não alterei para não fazer cagada, mas ser quiser eu altero. CMO ELMS*/
+
     public String codigo;
     public String titulo;
     public String isbn;
     public int ano;
-    public Categoria categoria;
+    public String categoria;
 
-    public Livro(String codigo,String titulo, String isbn, int ano, Categoria categoria){
+    public Livro(String codigo,String titulo, String isbn, int ano, String categoria){
         this.codigo = codigo;
         this.titulo = titulo;
         this.isbn = isbn;
@@ -26,7 +30,7 @@ public class Livro{
 
 
     public String toCsv(){
-        return  codigo +";"+ titulo+";" +isbn+";"+ ano+";"+ categoria.getDescricao();
+        return  codigo +";"+ titulo+";" +isbn+";"+ ano+";"+ categoria;
     }
 
     public String getCodigo() {
@@ -61,11 +65,11 @@ public class Livro{
         this.ano = ano;
     }
 
-    public Categoria getCategoria() {
+    public String getCategoria() {
         return categoria;
     }
 
-    public void setCategoria(Categoria categoria) {
+    public void setCategoria(String categoria) {
         this.categoria = categoria;
     }
     

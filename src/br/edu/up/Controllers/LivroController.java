@@ -3,13 +3,9 @@ package br.edu.up.Controllers;
 import java.util.List;
 
 import br.edu.up.DAO.LivroDAO;
-import br.edu.up.Models.Categoria;
 import br.edu.up.Models.Livro;
 
 public class LivroController {
-    /*LUIS:
-     * APENAS NÃO FIZ O MÉTODO, APENOS O CRIEI
-     */
     /*
      * @Author: Guilherme:
      *  Estou criando o CRUD da controller, para a utilização da VIEW
