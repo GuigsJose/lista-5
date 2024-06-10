@@ -13,14 +13,6 @@ public abstract class Pessoa {
         Endereco = endereco;
     }
 
-    public int getCodigo() {
-        return Codigo;
-    }
-
-    public void setCodigo(int codigo) {
-        Codigo = codigo;
-    }
-
     public String getDocumento() {
         return Documento;
     }
