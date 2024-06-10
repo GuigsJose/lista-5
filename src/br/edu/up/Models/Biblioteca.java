@@ -1,9 +1,9 @@
 package br.edu.up.Models;
 
-public class Biblioteca {
-    public String id;
-    public String nome;
-    public String genero;
+public abstract class Biblioteca {
+    String id;
+    String nome;
+    String genero;
 
     public Biblioteca(String id, String nome, String genero) {
         this.id = id;
