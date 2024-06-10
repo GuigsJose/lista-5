@@ -1,5 +1,4 @@
 package br.edu.up.DAO;
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -15,12 +14,12 @@ import br.edu.up.Models.Livro;
 
 
 public class LivroDAO {
-    /* @author: Guilherme Silva
-     * Rapaziada lembrem-se sempre de trocar o nome da variavel "arquivo", pq esse caminho que ta ai
-     * é equivalente ao meu pc, então lembrem sempre de colocar o lugar certo
-     * Guilherme: private String arquivo = "C:\\Java-Project\\lista-05\\Biblioteca\\src\\br\\edu\\up\\DAO\\Livros.csv";
-     */
-    //TODO 
+//     /* @author: Guilherme Silva
+//      * Rapaziada lembrem-se sempre de trocar o nome da variavel "arquivo", pq esse caminho que ta ai
+//      * é equivalente ao meu pc, então lembrem sempre de colocar o lugar certo
+//      * Guilherme: private String arquivo = "C:\\Java-Project\\lista-05\\Biblioteca\\src\\br\\edu\\up\\DAO\\Livros.csv";
+//      */
+//     //TODO 
     private String header = "";
     private String arquivo = "C:\\Java-Project\\lista-05\\Biblioteca\\src\\br\\edu\\up\\DAO\\Livros.csv";
 
@@ -64,8 +63,10 @@ public class LivroDAO {
         }
         return listaDeLivros;
     }
+    
+    
 
-    //CREATE
+//     //CREATE
     public boolean adicionarLivro(List<Livro> livros){
 
         try{
@@ -89,7 +90,7 @@ public class LivroDAO {
         return false;
     }
 
-    //UPDATE
+//     //UPDATE
     public boolean atualizarLivro(Livro livro){
         List<Livro> livros = listarLivros();
         boolean encontrado = false;
@@ -111,7 +112,7 @@ public class LivroDAO {
         }
     }
 
-    //DELETE
+//     //DELETE
     public boolean deletarLivro(String codigo){
         List<Livro> livros = listarLivros();
         boolean encontrado = false;
@@ -135,7 +136,5 @@ public class LivroDAO {
             return false;
         }
     }
-
- 
     
-}
+ }
