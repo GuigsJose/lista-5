@@ -1,3 +1,5 @@
+
+
 package br.edu.up.DAO;
 
 import java.io.BufferedReader;
@@ -65,7 +67,7 @@ public class LivroDAO {
         return listaDeLivros;
     }
 
-    //CREATE
+//     //CREATE
     public boolean adicionarLivro(List<Livro> livros){
 
         try{
@@ -89,7 +91,7 @@ public class LivroDAO {
         return false;
     }
 
-    //UPDATE
+//     //UPDATE
     public boolean atualizarLivro(Livro livro){
         List<Livro> livros = listarLivros();
         boolean encontrado = false;
@@ -111,7 +113,7 @@ public class LivroDAO {
         }
     }
 
-    //DELETE
+//     //DELETE
     public boolean deletarLivro(String codigo){
         List<Livro> livros = listarLivros();
         boolean encontrado = false;
@@ -125,6 +127,7 @@ public class LivroDAO {
             }
         }
 
+
         // rapazes, não achem estranho esse adicionarLivro(livros)
         // básicamente ele encontra o livro ali, deleta o livro(passando o código equivalente)
         // e retorna o adicionarLivro, pq ele atualiza a tabela de livros do arquivo csv
@@ -135,7 +138,5 @@ public class LivroDAO {
             return false;
         }
     }
-
- 
-    
 }
+

@@ -13,19 +13,19 @@ public class LivroController {
     private LivroDAO daos =  new LivroDAO();
     private List<Livro> livros;
 
-    public LivroController(){
-        this.livros = daos.listarLivros();
-    }
+//     public LivroController(){
+//         this.livros = daos.listarLivros();
+//     }
 
     //Criar
     public void incluirLivro(Livro livro){
         this.livros.add(livro);
     }
 
-    //Listar livros
-    public List<Livro> listarLivros(){
-        return daos.listarLivros();
-    }
+//     //Listar livros
+//     public List<Livro> listarLivros(){
+//         return daos.listarLivros();
+//     }
 
     //atualizar
     public void atualizarLivro(Livro livro){

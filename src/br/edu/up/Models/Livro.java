@@ -1,9 +1,11 @@
 package br.edu.up.Models;
 
 public class Livro{
-    /* @athor João: precisa encaixar a Livro para fazer parte de bilbioteca.
-     utilizar ID em vez de código e genero em vez de categoria ( abrange mais coisas do que apenas livros)  
-     - obs: não alterei para não fazer cagada, mas ser quiser eu altero. CMO ELMS*/
+// /* @athor João: precisa encaixar a Livro para fazer parte de bilbioteca.
+// utilizar ID em vez de código e genero em vez de categoria ( abrange mais
+// coisas do que apenas livros)
+// - obs: não alterei para não fazer cagada, mas ser quiser eu altero. CMO
+// ELMS*/
 
     public String codigo;
     public String titulo;
@@ -19,51 +21,48 @@ public class Livro{
         this.categoria = categoria;
     }
 
-    
+@Override
+public String toString() {
+return "Livro [codigo=" + codigo + ", titulo=" + titulo + ", isbn=" + isbn +
+", ano=" + ano + ", categoria="
++ categoria + "]";
+}
 
-    @Override
-    public String toString() {
-        return "Livro [codigo=" + codigo + ", titulo=" + titulo + ", isbn=" + isbn + ", ano=" + ano + ", categoria="
-                + categoria + "]";
-    }
 
 
+public String getCodigo() {
+return codigo;
+}
+
+public void setCodigo(String codigo) {
+this.codigo = codigo;
+}
 
     public String toCsv(){
         return  codigo +";"+ titulo+";" +isbn+";"+ ano+";"+ categoria;
     }
 
-    public String getCodigo() {
-        return codigo;
-    }
+public void setTitulo(String titulo) {
+this.titulo = titulo;
+}
 
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
-    }
+public String getIsbn() {
+return isbn;
+}
 
-    public String getTitulo() {
-        return titulo;
-    }
+public void setIsbn(String isbn) {
+this.isbn = isbn;
+}
 
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
+public int getAno() {
+return ano;
+}
 
-    public String getIsbn() {
-        return isbn;
-    }
+public void setAno(int ano) {
+this.ano = ano;
+}
 
-    public void setIsbn(String isbn) {
-        this.isbn = isbn;
-    }
 
-    public int getAno() {
-        return ano;
-    }
-
-    public void setAno(int ano) {
-        this.ano = ano;
-    }
 
     public String getCategoria() {
         return categoria;

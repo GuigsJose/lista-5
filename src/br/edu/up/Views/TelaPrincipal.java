@@ -12,7 +12,7 @@ public class TelaPrincipal {
      * creio eu não ser necessário outra view.
      */
 
-    LivroController controleLivro = new LivroController();
+     LivroController controleLivro = new LivroController();
 
     public void menuPrinciapl() {
         /* Luis: Opções do Menu */
@@ -32,13 +32,13 @@ public class TelaPrincipal {
 
             switch (opcao) {
                 case "1":
-                MostarmenuLivro();
+                    MostrarmenuLivro();
                     break;
                 case "2":
-                    menuFilme();
+                    MostrarmenuFilme();
                     break;
                 case "3":
-                    menuJogo();
+                    MostrarmenuJogo();
                     break;
                 case "4":
                     System.out.println("Saindo do sistema");
@@ -50,25 +50,21 @@ public class TelaPrincipal {
             }
         }
     }
-
     
-    public void MostarmenuLivro() {
-        
-            System.out.println("** Livro **");
-            System.out.println("1. Cadastrar Livro");
-            System.out.println("2. Atualizar Livro");
-            System.out.println("3. Listar Livros");
-            System.out.println("4. Deletar Livro");
-            System.out.println("5. Voltar ao Menu Principal");
-            System.out.println("6. Sair");
-        
+    public void MostrarmenuLivro() {
+        System.out.println("** Livro **");
+        System.out.println("1. Cadastrar Livro");
+        System.out.println("2. Atualizar Livro");
+        System.out.println("3. Listar Livros");
+        System.out.println("4. Deletar Livro");
+        System.out.println("5. Voltar ao Menu Principal");
+        System.out.println("6. Sair");
         /*
          * Luis: Menu
          * ESSA WHILE VAMOS MODIFICANDO CONFORME A NECESSIDADE
          */
         Scanner leitor = new Scanner(System.in);
         while (true) {
-
             String opL = leitor.nextLine();
 
             switch (opL) {
@@ -133,7 +129,8 @@ public class TelaPrincipal {
 
     }
 
-    public void menuFilme() {
+    
+    public void MostrarmenuFilme() {
         System.out.println("** Filme **");
         System.out.println("1. Cadastrar Filme");
         System.out.println("2. Atualizar Filme");
@@ -141,12 +138,8 @@ public class TelaPrincipal {
         System.out.println("4. Deletar Filme");
         System.out.println("5. Voltar ao Menu Principal");
         System.out.println("6. Sair");
-    }
-
-    public void MostrarmenuFilme() {
         Scanner leitor = new Scanner(System.in);
         while (true) {
-            menuFilme();
             String opF = leitor.nextLine();
 
             switch (opF) {
@@ -187,7 +180,8 @@ public class TelaPrincipal {
         }
     }
 
-    public void menuJogo() {
+    
+    public void MostrarmenuJogo() {
         System.out.println("** Jogo **");
         System.out.println("1. Cadastrar Jogo");
         System.out.println("2. Atualizar Jogo");
@@ -195,12 +189,9 @@ public class TelaPrincipal {
         System.out.println("4. Deletar Jogo");
         System.out.println("5. Voltar ao Menu Principal");
         System.out.println("6. Sair");
-    }
-
-    public void mostrarmenuJogo() {
         Scanner leitor = new Scanner(System.in);
         while (true) {
-            menuJogo();
+            
             String opJ = leitor.nextLine();
 
             switch (opJ) {

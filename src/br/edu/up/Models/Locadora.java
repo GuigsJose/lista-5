@@ -26,6 +26,4 @@ public class Locadora {
     public void setNome(String nome) {
         this.nome = nome;
     }
-    
-
 }
