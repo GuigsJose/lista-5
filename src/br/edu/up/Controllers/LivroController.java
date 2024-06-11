@@ -24,10 +24,10 @@ public class LivroController {
     // Criar
     public void incluirLivro(String codigo, String titulo, String isbn, int ano, String categoriaDescricao) {
         try {
-            Categoria categoria = Categoria.descricaoCategoria(categoriaDescricao);
-            Livro livro = new Livro(codigo, titulo, isbn, ano, categoria);
-            livros.add(livro);
-            daos.adicionarLivro(livros);
+            // Categoria categoria = Categoria.descricaoCategoria(categoriaDescricao);
+            // Livro livro = new Livro(codigo, titulo, isbn, ano, categoria);
+            // livros.add(livro);
+            // daos.adicionarLivro(livros);
         } catch (IllegalArgumentException e) {
             System.out.println("Categoria inválida: " + categoriaDescricao);
         }
@@ -41,13 +41,14 @@ public class LivroController {
     // atualizar
     public void atualizarLivro(String codigo, String novoTitulo, String novoIsbn, int novoAno, String novaCategoria) {
         try {
-            Categoria categoria = Categoria.descricaoCategoria(novaCategoria);
-            Livro novoLivro = new Livro(codigo, novoTitulo, novoIsbn, novoAno, categoria);
-            boolean atualizado = daos.atualizarLivro(novoLivro);
-            if (atualizado) {
-                // [bizu] coloquei um sysout pra verificação
-                System.out.println("Livro Atualizado com sucesso!");
-            }
+            // Categoria categoria = Categoria.descricaoCategoria(novaCategoria);
+            // Livro novoLivro = new Livro(codigo, novoTitulo, novoIsbn, novoAno,
+            // categoria);
+            // boolean atualizado = daos.atualizarLivro(novoLivro);
+            // if (atualizado) {
+            // // [bizu] coloquei um sysout pra verificação
+            // System.out.println("Livro Atualizado com sucesso!");
+            // }
         } catch (IllegalArgumentException e) {
             System.out.println("Categoria inválida: " + novaCategoria);
         }

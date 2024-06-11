@@ -2,6 +2,9 @@ package br.edu.up.utils;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+
+import br.edu.up.Models.Enums.Categoria;
 
 public class Prompts {
     List<String> labelCategoria = Arrays.asList(
@@ -18,8 +21,8 @@ public class Prompts {
             "Tecnologia");
 
     public String DescricaoCategoria(int categoria) {
-
-        return labelCategoria.get(categoria).toString();
+        return labelCategoria.stream().filter(x -> x.length() == categoria).collect(Collectors.toList())
+                .toString();
     }
 
 }

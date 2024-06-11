@@ -130,9 +130,8 @@ public class TelaPrincipal {
         System.out.println("Digite a categoria do livro: ");
         String categoria = leitor.nextLine();
 
-        Livro livro = new Livro(codigo, titulo, isbn, ano, categoria);
-        controleLivro.incluirLivro(livro);
-
+        // Livro livro = new Livro(codigo, titulo, isbn, ano, categoria);
+        // controleLivro.incluirLivro(livro);
 
     }
 
@@ -239,7 +238,7 @@ public class TelaPrincipal {
 
     public void incluirJogo() {
         Scanner leitor = new Scanner(System.in);
-        
+
         System.out.println("Digite o Código do jogo: ");
         String id = leitor.nextLine();
 
@@ -257,20 +256,20 @@ public class TelaPrincipal {
 
     }
 
-    public void atualizar(){
+    public void atualizar() {
         Scanner leitor = new Scanner(System.in);
-       
+
         System.out.println("Digite o as infomações do jogo que você deseja atualizar");
-       
+
         System.out.println("Digite o Código: ");
         String id = leitor.nextLine();
-       
+
         System.out.println("Digite o nome: ");
         String nome = leitor.nextLine();
-        
+
         System.out.println("Digite o genero: ");
         String genero = leitor.nextLine();
-        
+
         System.out.println("Digite o ano: ");
         int ano = leitor.nextInt();
 
@@ -279,7 +278,7 @@ public class TelaPrincipal {
 
     public void deletarJogo() {
         Scanner leitor = new Scanner(System.in);
-        
+
         System.out.println("Digite o Código do jogo que você deseja deletar: ");
         String id = leitor.nextLine();
 

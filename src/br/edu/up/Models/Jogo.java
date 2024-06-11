@@ -1,6 +1,6 @@
 package br.edu.up.Models;
 
-public class Jogo extends Biblioteca {
+public class Jogo extends Locadora {
     // @athor Luis: foi craida a model como classe mais baixam da Produto .
     public int ano;
 
@@ -21,8 +21,8 @@ public class Jogo extends Biblioteca {
     public String toString() {
         return "Jogo [id=" + id + ", gereno=" + genero + ", nome=" + nome + ", ano=" + ano + "]";
     }
-    
-    public String toCsv(){
+
+    public String toCsv() {
         return id + "," + nome + "," + genero + "," + ano;
     }
 
