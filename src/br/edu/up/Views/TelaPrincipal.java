@@ -2,6 +2,9 @@ package br.edu.up.Views;
 
 import java.util.Scanner;
 
+import br.edu.up.Controllers.JogoController;
+import br.edu.up.Models.Jogo;
+
 // import br.edu.up.Controllers.LivroController;
 // import br.edu.up.Models.Categoria;
 // import br.edu.up.Models.Livro;
@@ -14,6 +17,7 @@ public class TelaPrincipal {
      */
 
     // LivroController controleLivro = new LivroController();
+    JogoController jogoController = new JogoController();
 
     public void menuPrinciapl() {
         /* Luis: Opções do Menu */
@@ -51,7 +55,7 @@ public class TelaPrincipal {
             }
         }
     }
-    
+
     public void MostrarmenuLivro() {
         System.out.println("** Livro **");
         System.out.println("1. Cadastrar Livro");
@@ -134,7 +138,6 @@ public class TelaPrincipal {
 
     }
 
-    
     public void MostrarmenuFilme() {
         System.out.println("** Filme **");
         System.out.println("1. Cadastrar Filme");
@@ -152,7 +155,6 @@ public class TelaPrincipal {
                     System.out.println("----------------------------");
                     System.out.println("      ADICIONAR FILME");
                     System.out.println("----------------------------");
-                    
 
                     break;
                 case "2":
@@ -185,7 +187,6 @@ public class TelaPrincipal {
         }
     }
 
-    
     public void MostrarmenuJogo() {
         System.out.println("** Jogo **");
         System.out.println("1. Cadastrar Jogo");
@@ -196,7 +197,7 @@ public class TelaPrincipal {
         System.out.println("6. Sair");
         Scanner leitor = new Scanner(System.in);
         while (true) {
-            
+
             String opJ = leitor.nextLine();
 
             switch (opJ) {
@@ -204,7 +205,7 @@ public class TelaPrincipal {
                     System.out.println("----------------------------");
                     System.out.println("      ADICIONAR JOGO");
                     System.out.println("----------------------------");
-                
+                    incluirJogo();
 
                     break;
                 case "2":
@@ -217,12 +218,13 @@ public class TelaPrincipal {
                     System.out.println("----------------------------");
                     System.out.println("       LISTAR JOGO");
                     System.out.println("----------------------------");
-
+                    jogoController.listarJogos();
                     break;
                 case "4":
                     System.out.println("----------------------------");
                     System.out.println("      DELETAR JOGOS");
                     System.out.println("----------------------------");
+                    deletarJogo();
                     break;
                 case "5":
                     menuPrinciapl();
@@ -235,6 +237,55 @@ public class TelaPrincipal {
                     System.out.println("Opção inválida, Por gentileza escolha opção válida e tente novamente.");
             }
         }
+    }
+
+    public void incluirJogo() {
+        Scanner leitor = new Scanner(System.in);
+        
+        System.out.println("Digite o Código do jogo: ");
+        String id = leitor.nextLine();
+
+        System.out.println("Digite o nome do jogo: ");
+        String nome = leitor.nextLine();
+
+        System.out.println("Digite o genero do jogo: ");
+        String genero = leitor.nextLine();
+
+        System.out.println("Digite o ano do jogo: ");
+        int ano = leitor.nextInt();
+
+        String resultado = jogoController.adicionar(id, nome, genero, ano);
+        System.out.println(resultado);
+
+    }
+
+    public void atualizar(){
+        Scanner leitor = new Scanner(System.in);
+       
+        System.out.println("Digite o as infomações do jogo que você deseja atualizar");
+       
+        System.out.println("Digite o Código: ");
+        String id = leitor.nextLine();
+       
+        System.out.println("Digite o nome: ");
+        String nome = leitor.nextLine();
+        
+        System.out.println("Digite o genero: ");
+        String genero = leitor.nextLine();
+        
+        System.out.println("Digite o ano: ");
+        int ano = leitor.nextInt();
+
+        jogoController.atualizarJogo(id, nome, genero, ano);
+    }
+
+    public void deletarJogo() {
+        Scanner leitor = new Scanner(System.in);
+        
+        System.out.println("Digite o Código do jogo que você deseja deletar: ");
+        String id = leitor.nextLine();
+
+        jogoController.deletarJogo(id);
     }
 
 }
