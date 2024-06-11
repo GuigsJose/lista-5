@@ -7,10 +7,14 @@ import br.edu.up.Models.Livro;
 
 public class LivroController {
     /*
-     * @Author: Guilherme:
-     *  Estou criando o CRUD da controller, para a utilização da VIEW
+     * LUIS:
+     * APENAS NÃO FIZ O MÉTODO, APENOS O CRIEI
      */
-    private LivroDAO daos =  new LivroDAO();
+    /*
+     * @Author: Guilherme:
+     * Estou criando o CRUD da controller, para a utilização da VIEW
+     */
+    private LivroDAO daos = new LivroDAO();
     private List<Livro> livros;
 
     public LivroController(){
@@ -22,41 +26,19 @@ public class LivroController {
         daos.adicionarLivro(livro);
     }
 
-//     //Listar livros
-//     public List<Livro> listarLivros(){
-//         return daos.listarLivros();
-//     }
 
-    //atualizar
-    public void atualizarLivro(Livro livro){
-        // try{
-        //     Categoria categoria = Categoria.descricaoCategoria(novaCategoria);
-        //     Livro novoLivro = new Livro(codigo, novoTitulo, novoIsbn, novoAno, categoria);
-        //     boolean atualizado = daos.atualizarLivro(novoLivro);
-        //     if (atualizado) {
-        //         //[bizu] coloquei um sysout pra verificação
-        //         System.out.println("Livro Atualizado com sucesso!");
-        //     }
-        // }catch(IllegalArgumentException e){
-        //     System.out.println("Categoria inválida: " + novaCategoria);
-        // }
+    // Listar livros
+    public List<Livro> listarLivros() {
+        return daos.listarLivros();
+    }
+
+    // atualizar
+    public void atualizarLivro(Livro livro) {
         daos.atualizarLivro(livro);
     }
 
-    //delete
-    public void deletarLivro(String codigo){
-    //     boolean deletado = daos.deletarLivro(codigo);
-    //     if (deletado) {
-    //         System.out.println("Livro deletado com sucesso");
-    //     }else{
-    //         System.out.println("Código não encontrado: " + codigo);
-    //     }
-    // }
-
-    // public boolean GravarDados(){
-    //     return daos.adicionarLivro(livros);
-    // }
-
+    // delete
+    public void deletarLivro(String codigo) {
         daos.deletarLivro(codigo);
     }
 
