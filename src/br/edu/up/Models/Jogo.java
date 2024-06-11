@@ -1,7 +1,7 @@
 package br.edu.up.Models;
 
-public class Jogo extends Locadora {
-    
+public class Jogo extends Biblioteca {
+    // @athor Luis: foi craida a model como classe mais baixam da Produto .
     public int ano;
 
     public Jogo(String id, String nome, String genero, int ano) {

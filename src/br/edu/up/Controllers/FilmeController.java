@@ -14,14 +14,15 @@ public class FilmeController {
     }
 
     // Criar
-    public void incluirFilme(String id, String nome, String genero, String diretor, int anoLancamento) {
+    public String incluirFilme(String id, String nome, String genero, String diretor, int anoLancamento) {
         try {
             Filme filme = new Filme(id, nome, genero, diretor, anoLancamento);
             filmes.add(filme);
             dao.adicionarFilme(filmes);
+            return "Filme adicionado com sucesso!!!";
 
         } catch (IllegalArgumentException e) {
-            System.out.println("Gênero inválido: " + genero);
+            return "Gênero inválido: " + e;
         }
     }
 
@@ -31,25 +32,24 @@ public class FilmeController {
     }
 
     // Atualizar
-    public void atualizarFilme(String id, String nome, String genero, String diretor, int anoLancamento) {
+    public String atualizarFilme(String id, String nome, String genero, String diretor, int anoLancamento) {
         try {
             Filme filme = new Filme(id, nome, genero, diretor, anoLancamento);
-            boolean atualizado = dao.atualizarFilme(filme);
-            if (atualizado) {
-                System.out.println("Filme Atualizado com sucesso!");
-            }
+            dao.atualizarFilme(filme);
+            return "Filme Atualizado com sucesso!";
+
         } catch (IllegalArgumentException e) {
-            System.out.println("Gênero inválido: " + genero);
+            return "Gênero inválido: " + e;
         }
     }
 
     // Deletar
-    public void deletarFilme(String id) {
+    public String deletarFilme(String id) {
         boolean deletado = dao.deletarFilme(id);
         if (deletado) {
-            System.out.println("Filme deletado com sucesso");
+            return "Filme deletado com sucesso";
         } else {
-            System.out.println("Código não encontrado: " + id);
+            return "Código não encontrado: " + id;
         }
     }
 }
