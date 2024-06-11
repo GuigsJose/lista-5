@@ -1,6 +1,6 @@
 package br.edu.up.Models;
 
-public class Jogo extends Biblioteca {
+public class Jogo extends Locadora {
     
     public int ano;
 

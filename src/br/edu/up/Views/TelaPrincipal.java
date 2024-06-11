@@ -3,7 +3,6 @@ package br.edu.up.Views;
 import java.util.Scanner;
 
 import br.edu.up.Controllers.LivroController;
-import br.edu.up.Models.Categoria;
 import br.edu.up.Models.Livro;
 
 public class TelaPrincipal {
@@ -13,7 +12,7 @@ public class TelaPrincipal {
      * creio eu não ser necessário outra view.
      */
 
-    LivroController controleLivro = new LivroController();
+     LivroController controleLivro = new LivroController();
 
     public void menuPrinciapl() {
         /* Luis: Opções do Menu */
@@ -33,13 +32,13 @@ public class TelaPrincipal {
 
             switch (opcao) {
                 case "1":
-                    menuLivro();
+                    MostrarmenuLivro();
                     break;
                 case "2":
-                    menuFilme();
+                    MostrarmenuFilme();
                     break;
                 case "3":
-                    menuJogo();
+                    MostrarmenuJogo();
                     break;
                 case "4":
                     System.out.println("Saindo do sistema");
@@ -51,8 +50,8 @@ public class TelaPrincipal {
             }
         }
     }
-
-    public void menuLivro() {
+    
+    public void MostrarmenuLivro() {
         System.out.println("** Livro **");
         System.out.println("1. Cadastrar Livro");
         System.out.println("2. Atualizar Livro");
@@ -60,16 +59,12 @@ public class TelaPrincipal {
         System.out.println("4. Deletar Livro");
         System.out.println("5. Voltar ao Menu Principal");
         System.out.println("6. Sair");
-    }
-
-    public void MostarmenuLivro() {
         /*
          * Luis: Menu
          * ESSA WHILE VAMOS MODIFICANDO CONFORME A NECESSIDADE
          */
         Scanner leitor = new Scanner(System.in);
         while (true) {
-            menuLivro();
             String opL = leitor.nextLine();
 
             switch (opL) {
@@ -128,17 +123,14 @@ public class TelaPrincipal {
         System.out.println("Digite a categoria do livro: ");
         String categoria = leitor.nextLine();
 
-        /*
-         * Luis:
-         * Não estou conseguido finalizar esse final
-         * Não consigo chamar a categoria
-         */
-        // Livro livro = new Livro(codigo, titulo, isbn, ano, Livro.getCategoria());
-        // controleLivro.incluirLivro(livro);
+        Livro livro = new Livro(codigo, titulo, isbn, ano, categoria);
+        controleLivro.incluirLivro(livro);
+
 
     }
 
-    public void menuFilme() {
+    
+    public void MostrarmenuFilme() {
         System.out.println("** Filme **");
         System.out.println("1. Cadastrar Filme");
         System.out.println("2. Atualizar Filme");
@@ -146,12 +138,8 @@ public class TelaPrincipal {
         System.out.println("4. Deletar Filme");
         System.out.println("5. Voltar ao Menu Principal");
         System.out.println("6. Sair");
-    }
-
-    public void MostrarmenuFilme() {
         Scanner leitor = new Scanner(System.in);
         while (true) {
-            menuFilme();
             String opF = leitor.nextLine();
 
             switch (opF) {
@@ -192,7 +180,8 @@ public class TelaPrincipal {
         }
     }
 
-    public void menuJogo() {
+    
+    public void MostrarmenuJogo() {
         System.out.println("** Jogo **");
         System.out.println("1. Cadastrar Jogo");
         System.out.println("2. Atualizar Jogo");
@@ -200,12 +189,9 @@ public class TelaPrincipal {
         System.out.println("4. Deletar Jogo");
         System.out.println("5. Voltar ao Menu Principal");
         System.out.println("6. Sair");
-    }
-
-    public void mostrarmenuJogo() {
         Scanner leitor = new Scanner(System.in);
         while (true) {
-            menuJogo();
+            
             String opJ = leitor.nextLine();
 
             switch (opJ) {

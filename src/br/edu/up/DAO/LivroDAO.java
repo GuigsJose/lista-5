@@ -1,3 +1,5 @@
+
+
 package br.edu.up.DAO;
 
 import java.io.BufferedReader;
@@ -11,8 +13,6 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
-import br.edu.up.Models.Categoria;
 import br.edu.up.Models.Livro;
 
 
@@ -52,7 +52,7 @@ public class LivroDAO {
                     int ano = Integer.parseInt(dados[3]);
                     //aqui transforma o enum numa string, e passa a posição correspondente no array
                     //de dados no csv
-                    Categoria categoria = Categoria.descricaoCategoria(dados[4]);
+                    String categoria = dados[4];
 
                     Livro livro = new Livro(codigo, titulo, isbn, ano, categoria);
                     listaDeLivros.add(livro);
@@ -67,7 +67,7 @@ public class LivroDAO {
         return listaDeLivros;
     }
 
-    //CREATE
+//     //CREATE
     public boolean adicionarLivro(List<Livro> livros){
 
         try{
@@ -91,7 +91,7 @@ public class LivroDAO {
         return false;
     }
 
-    //UPDATE
+//     //UPDATE
     public boolean atualizarLivro(Livro livro){
         List<Livro> livros = listarLivros();
         boolean encontrado = false;
@@ -113,7 +113,7 @@ public class LivroDAO {
         }
     }
 
-    //DELETE
+//     //DELETE
     public boolean deletarLivro(String codigo){
         List<Livro> livros = listarLivros();
         boolean encontrado = false;
@@ -127,6 +127,7 @@ public class LivroDAO {
             }
         }
 
+
         // rapazes, não achem estranho esse adicionarLivro(livros)
         // básicamente ele encontra o livro ali, deleta o livro(passando o código equivalente)
         // e retorna o adicionarLivro, pq ele atualiza a tabela de livros do arquivo csv
@@ -137,5 +138,5 @@ public class LivroDAO {
             return false;
         }
     }
-    
 }
+
