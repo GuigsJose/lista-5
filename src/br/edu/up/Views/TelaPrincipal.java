@@ -210,7 +210,7 @@ public class TelaPrincipal {
 
 
         Filme filme = new Filme(id, nome, genero, diretor, anoLancamento);
-        FilmeController.incluirFilme(filme);
+        filmeController.incluirFilme(filme);
 
 
     }
