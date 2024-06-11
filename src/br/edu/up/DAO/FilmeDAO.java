@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import br.edu.up.Models.Filme;
+import br.edu.up.Models.Livro;
 
 public class FilmeDAO {
 
@@ -52,22 +53,33 @@ public class FilmeDAO {
     }
 
     // CREATE
-    public boolean adicionarFilme(List<Filme> filmes) {
-        try {
+    public boolean adicionarFilme(Filme filme) {
+          List<Filme> filmes = listarFilmes();
+        filmes.add(filme);
+        return gravaFilme(filmes);
+    }
+
+    public boolean gravaFilme(List<Filme> filmes){
+        try{
+
             FileWriter salvaArquivo = new FileWriter(arquivo);
             PrintWriter salvar = new PrintWriter(salvaArquivo);
+
             salvar.println(header);
 
             for (Filme filme : filmes) {
                 salvar.println(filme.toCsv());
             }
             salvar.close();
+
             return true;
 
-        } catch (IOException e) {
+
+        }catch(IOException e){
             System.out.println("Não foi possivel gravar o arquivo");
         }
         return false;
+            
     }
 
     // UPDATE
@@ -85,7 +97,7 @@ public class FilmeDAO {
         }
 
         if (encontrado) {
-            return adicionarFilme(filmes);
+            return gravaFilme(filmes);
         } else {
             System.out.println("id não encontrado: " + filme.getId());
             return false;
@@ -107,7 +119,7 @@ public class FilmeDAO {
         }
 
         if (encontrado) {
-            return adicionarFilme(filmes);
+            return gravaFilme(filmes);
         } else {
             System.out.println("Código não encontrado: " + id);
             return false;

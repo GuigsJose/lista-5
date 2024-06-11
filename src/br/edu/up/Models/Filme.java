@@ -38,8 +38,13 @@ public class Filme extends Locadora{
 
     @Override
     public String toString() {
-        return "Filme [id=" + id + ", genero=" + genero + ", nome=" + nome + ", diretor=" + diretor + ", anoLancamento="
-                + anoLancamento + "]";
+        return "Filme{" +
+                "id='" + id + '\'' +
+                ", nome='" + nome + '\'' +
+                ", genero='" + genero + '\'' +
+                ", diretor='" + diretor + '\'' +
+                ", anoLancamento=" + anoLancamento +
+                '}';
     }
 
     public String toCsv(){

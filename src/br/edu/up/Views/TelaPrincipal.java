@@ -2,8 +2,11 @@ package br.edu.up.Views;
 
 import java.util.Scanner;
 
+import br.edu.up.Controllers.FilmeController;
 import br.edu.up.Controllers.JogoController;
 import br.edu.up.Models.Jogo;
+import br.edu.up.Models.Filme;
+
 
 import br.edu.up.Controllers.JogoController;
 import br.edu.up.Models.Jogo;
@@ -20,6 +23,7 @@ public class TelaPrincipal {
 
     LivroController controleLivro = new LivroController();
     JogoController jogoController = new JogoController();
+    FilmeController filmeController = new FilmeController();
 
     public void menuPrinciapl() {
         /* Luis: Opções do Menu */
@@ -184,6 +188,31 @@ public class TelaPrincipal {
                     System.out.println("Opção inválida, Por gentileza escolha opção válida e tente novamente.");
             }
         }
+    }
+
+    public void incluirFilme() {
+        /* Luis: Incluir Filme */
+        Scanner leitor = new Scanner(System.in);
+        System.out.println("Digite o id do Filme: ");
+        String id = leitor.nextLine();
+
+        System.out.println("Digite o nome do Filme: ");
+        String nome = leitor.nextLine();
+
+        System.out.println("Digite o genero do Filme: ");
+        String genero = leitor.nextLine();
+
+        System.out.println("Digite o nome do diretor do Filme: ");
+        String diretor = leitor.nextLine();
+
+        System.out.println("Digite o ano lançamento do Filme: ");
+        int anoLancamento = leitor.nextInt();
+
+
+        Filme filme = new Filme(id, nome, genero, diretor, anoLancamento);
+        FilmeController.incluirFilme(filme);
+
+
     }
 
     public void MostrarmenuJogo() {
