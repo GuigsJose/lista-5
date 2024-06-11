@@ -68,7 +68,14 @@ public class LivroDAO {
     }
 
 //     //CREATE
-    public boolean adicionarLivro(List<Livro> livros){
+
+    public boolean adicionarLivro(Livro livro){
+        List<Livro> livros = listarLivros();
+        livros.add(livro);
+        return gravaLivro(livros);
+    }
+
+    public boolean gravaLivro(List<Livro> livros){
 
         try{
 
@@ -106,7 +113,7 @@ public class LivroDAO {
         }
 
         if (encontrado) {
-            return adicionarLivro(livros);
+            return gravaLivro(livros);
         }else{
             System.out.println("Codigo não encontrado: " + livro.getCodigo());
             return false;
@@ -127,12 +134,8 @@ public class LivroDAO {
             }
         }
 
-
-        // rapazes, não achem estranho esse adicionarLivro(livros)
-        // básicamente ele encontra o livro ali, deleta o livro(passando o código equivalente)
-        // e retorna o adicionarLivro, pq ele atualiza a tabela de livros do arquivo csv
         if (encontrado) {
-            return(adicionarLivro(livros));
+            return(gravaLivro(livros));
         }else{
             System.out.println("Código não encontrado: " + codigo);
             return false;

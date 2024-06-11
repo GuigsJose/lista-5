@@ -13,13 +13,13 @@ public class LivroController {
     private LivroDAO daos =  new LivroDAO();
     private List<Livro> livros;
 
-//     public LivroController(){
-//         this.livros = daos.listarLivros();
-//     }
+    public LivroController(){
+        this.livros = daos.listarLivros();
+    }
 
     //Criar
     public void incluirLivro(Livro livro){
-        this.livros.add(livro);
+        daos.adicionarLivro(livro);
     }
 
 //     //Listar livros
@@ -58,5 +58,9 @@ public class LivroController {
     // }
 
         daos.deletarLivro(codigo);
+    }
+
+    public void salvarDados(){
+        daos.gravaLivro(livros);
     }
 }

@@ -98,6 +98,7 @@ public class TelaPrincipal {
                 case "6":
                     System.out.println("Saindo do sistema...");
                     leitor.close();
+                    controleLivro.salvarDados();
                     return;
                 default:
                     System.out.println("Opção inválida, Por gentileza escolha opção válida e tente novamente.");
