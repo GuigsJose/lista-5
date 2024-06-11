@@ -5,9 +5,11 @@ import java.util.Scanner;
 import br.edu.up.Controllers.JogoController;
 import br.edu.up.Models.Jogo;
 
-// import br.edu.up.Controllers.LivroController;
-// import br.edu.up.Models.Categoria;
-// import br.edu.up.Models.Livro;
+import br.edu.up.Controllers.JogoController;
+import br.edu.up.Models.Jogo;
+
+import br.edu.up.Controllers.LivroController;
+import br.edu.up.Models.Livro;
 
 public class TelaPrincipal {
 
@@ -16,7 +18,7 @@ public class TelaPrincipal {
      * creio eu não ser necessário outra view.
      */
 
-    // LivroController controleLivro = new LivroController();
+    LivroController controleLivro = new LivroController();
     JogoController jogoController = new JogoController();
 
     public void menuPrinciapl() {
@@ -128,13 +130,9 @@ public class TelaPrincipal {
         System.out.println("Digite a categoria do livro: ");
         String categoria = leitor.nextLine();
 
-        /*
-         * Luis:
-         * Não estou conseguido finalizar esse final
-         * Não consigo chamar a categoria
-         */
-        // Livro livro = new Livro(codigo, titulo, isbn, ano, Livro.getCategoria());
-        // controleLivro.incluirLivro(livro);
+        Livro livro = new Livro(codigo, titulo, isbn, ano, categoria);
+        controleLivro.incluirLivro(livro);
+
 
     }
 

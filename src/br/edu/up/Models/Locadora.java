@@ -1,11 +1,11 @@
 package br.edu.up.Models;
 
-public abstract class Biblioteca {
-    String id;
-    String nome;
-    String genero;
+public class Locadora {
+    public String id;
+    public String nome;
+    public String genero;
 
-    public Biblioteca(String id, String nome, String genero) {
+    public Locadora(String id, String nome, String genero) {
         this.id = id;
         this.nome = nome;
         this.genero = genero;
@@ -26,6 +26,4 @@ public abstract class Biblioteca {
     public void setNome(String nome) {
         this.nome = nome;
     }
-    
-
 }
