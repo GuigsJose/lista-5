@@ -11,4 +11,21 @@ public class Cliente extends Pessoa {
         Tipo = tipoCliente;
         Codigo = codigo;
     }
+
+    public int getCodigo() {
+        return Codigo;
+    }
+
+    public void setCodigo(int codigo) {
+        Codigo = codigo;
+    }
+
+    public TipoCliente getTipo() {
+        return Tipo;
+    }
+
+    public void setTipo(TipoCliente tipo) {
+        Tipo = tipo;
+    }
+
 }

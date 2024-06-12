@@ -12,6 +12,14 @@ public class Funcionario extends Pessoa {
         Codigo = codigo;
     }
 
+    public int getCodigo() {
+        return Codigo;
+    }
+
+    public void setCodigo(int codigo) {
+        Codigo = codigo;
+    }
+
     public TipoCargo getCargo() {
         return Cargo;
     }
@@ -19,4 +27,5 @@ public class Funcionario extends Pessoa {
     public void setCargo(TipoCargo cargo) {
         Cargo = cargo;
     }
+
 }

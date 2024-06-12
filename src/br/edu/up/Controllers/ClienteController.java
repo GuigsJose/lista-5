@@ -1,28 +1,11 @@
 package br.edu.up.Controllers;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
-
 import br.edu.up.Models.Cliente;
+import br.edu.up.Models.Enums.TipoCliente;
 
 public class ClienteController {
-    List<Cliente> Clientes = new ArrayList<Cliente>();
 
-    public void RegistrarCliente(Cliente cliente) {
-        Clientes.add(cliente);
-    }
-
-    public List<Cliente> getCliente(int codigo) {
-        return Clientes.stream().filter(x -> x.getCodigo() == codigo).collect(Collectors.toList());
-    }
-
-    public String ConsultarClientes() {
-        return Clientes.toString();
-    }
-
-    public void RemoverCliente(int codigo) {
-        Clientes.remove(codigo);
+    public void RegistrarCliente(String doc, String nome, int idade, String endereco, TipoCliente tipoCliente) {
+        Cliente cliente = new Cliente(doc, nome, idade, endereco, tipoCliente);
     }
 }

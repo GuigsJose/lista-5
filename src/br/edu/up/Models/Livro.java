@@ -1,77 +1,67 @@
 package br.edu.up.Models;
 
-public class Livro{
-// /* @athor João: precisa encaixar a Livro para fazer parte de bilbioteca.
-// utilizar ID em vez de código e genero em vez de categoria ( abrange mais
-// coisas do que apenas livros)
-// - obs: não alterei para não fazer cagada, mas ser quiser eu altero. CMO
-// ELMS*/
+import br.edu.up.Models.Enums.Categoria;
 
-    public String codigo;
-    public String titulo;
-    public String isbn;
-    public int ano;
-    public String categoria;
+public class Livro {
+    int Codigo;
+    String Titulo;
+    String Isbn;
+    int Ano;
+    Categoria Genero;
 
-    public Livro(String codigo,String titulo, String isbn, int ano, String categoria){
-        this.codigo = codigo;
-        this.titulo = titulo;
-        this.isbn = isbn;
-        this.ano = ano;
-        this.categoria = categoria;
+    public Livro(int codigo, String titulo, String isbn, int ano, Categoria genero) {
+        this.Codigo = codigo;
+        this.Titulo = titulo;
+        this.Isbn = isbn;
+        this.Ano = ano;
+        this.Genero = genero;
     }
 
-@Override
-public String toString() {
-return "Livro [codigo=" + codigo + ", titulo=" + titulo + ", isbn=" + isbn +
-", ano=" + ano + ", categoria="
-+ categoria + "]";
-}
-
-
-
-public String getCodigo() {
-return codigo;
-}
-
-public void setCodigo(String codigo) {
-this.codigo = codigo;
-}
-
-    public String toCsv(){
-        return  codigo +";"+ titulo+";" +isbn+";"+ ano+";"+ categoria;
+    @Override
+    public String toString() {
+        return "Livro [codigo=" + Codigo + ", titulo=" + Titulo + ", isbn=" + Isbn +
+                ", ano=" + Ano + ", genero="
+                + Genero + "]";
     }
 
-public void setTitulo(String titulo) {
-this.titulo = titulo;
-}
-
-public String getIsbn() {
-return isbn;
-}
-
-public void setIsbn(String isbn) {
-this.isbn = isbn;
-}
-
-public int getAno() {
-return ano;
-}
-
-public void setAno(int ano) {
-this.ano = ano;
-}
-
-
-
-    public String getCategoria() {
-        return categoria;
+    public int getCodigo() {
+        return Codigo;
     }
 
-    public void setCategoria(String categoria) {
-        this.categoria = categoria;
+    public void setCodigo(int codigo) {
+        this.Codigo = codigo;
     }
-    
-    
-    
+
+    public String toCsv() {
+        return Codigo + ";" + Titulo + ";" + Isbn + ";" + Ano + ";" + Genero;
+    }
+
+    public void setTitulo(String titulo) {
+        this.Titulo = titulo;
+    }
+
+    public String getIsbn() {
+        return Isbn;
+    }
+
+    public void setIsbn(String isbn) {
+        this.Isbn = isbn;
+    }
+
+    public int getAno() {
+        return Ano;
+    }
+
+    public void setAno(int ano) {
+        this.Ano = ano;
+    }
+
+    public Categoria getGenero() {
+        return Genero;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.Genero = categoria;
+    }
+
 }
