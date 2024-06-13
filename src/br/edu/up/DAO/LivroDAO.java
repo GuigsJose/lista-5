@@ -1,11 +1,8 @@
 
 package br.edu.up.DAO;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -13,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import br.edu.up.Models.Livro;
+import br.edu.up.Models.Enums.Categoria;
 
 public class LivroDAO {
     /*
@@ -26,10 +24,10 @@ public class LivroDAO {
     // TODO
     private String header = "";
     private String arquivo = "C:\\Java-Project\\lista-05\\Biblioteca\\src\\br\\edu\\up\\DAO\\Livros.csv";
+    List<Livro> listaDeLivros = new ArrayList<Livro>();
 
     // READ lista todos os livros
     public List<Livro> listarLivros() {
-        List<Livro> listaDeLivros = new ArrayList<>();
 
         try {
             File arquivoLivros = new File(arquivo);
@@ -45,15 +43,15 @@ public class LivroDAO {
 
                 String[] dados = linha.split(";");
 
-                String codigo = dados[0];
+                int codigo = Integer.parseInt(dados[0]);
 
-                if (codigo != null && !codigo.equals("")) {
+                if (codigo != 0) {
                     String titulo = dados[1];
                     String isbn = dados[2];
                     int ano = Integer.parseInt(dados[3]);
                     // aqui transforma o enum numa string, e passa a posição correspondente no array
                     // de dados no csv
-                    String categoria = dados[4];
+                    Categoria categoria = Categoria.valueOf(dados[4]);
 
                     Livro livro = new Livro(codigo, titulo, isbn, ano, categoria);
                     listaDeLivros.add(livro);
@@ -70,15 +68,11 @@ public class LivroDAO {
     // //CREATE
 
     public boolean adicionarLivro(Livro livro) {
-        List<Livro> livros = listarLivros();
-        livros.add(livro);
-        return gravaLivro(livros);
+        return gravarLivro(listaDeLivros);
     }
 
-    public boolean gravaLivro(List<Livro> livros) {
-
+    public boolean gravarLivro(List<Livro> livros) {
         try {
-
             FileWriter salvaArquivo = new FileWriter(arquivo);
             PrintWriter salvar = new PrintWriter(salvaArquivo);
 
@@ -99,20 +93,22 @@ public class LivroDAO {
 
     // //UPDATE
     public boolean atualizarLivro(Livro livro) {
-        List<Livro> livros = listarLivros();
-        boolean encontrado = false;
+        boolean encontrado = listaDeLivros.equals(livro);
 
-        for (int i = 0; i < livros.size(); i++) {
-            Livro l = livros.get(i);
-            if (livro.getCodigo().equals(livro.getCodigo())) {
-                livros.set(i, livro);
-                encontrado = true;
-                break;
-            }
-        }
+        // Que isso?
+        // for (int i = 0; i < livros.size(); i++) {
+        // Livro l = livros.get(i);
+        // if (livro.getCodigo().equals(livro.getCodigo())) {
+        // livros.set(i, livro);
+        // encontrado = true;
+        // break;
+        // }
+        // }
 
         if (encontrado) {
-            return gravaLivro(livros);
+            int index = listaDeLivros.indexOf(livro);
+            listaDeLivros.add(index, livro);
+            return gravarLivro(listaDeLivros);
         } else {
             System.out.println("Codigo não encontrado: " + livro.getCodigo());
             return false;
@@ -120,21 +116,23 @@ public class LivroDAO {
     }
 
     // //DELETE
-    public boolean deletarLivro(String codigo) {
-        List<Livro> livros = listarLivros();
-        boolean encontrado = false;
+    public boolean deletarLivro(int codigo) {
+        boolean encontrado = listaDeLivros.removeIf(x -> x.getCodigo() == codigo);
 
-        for (int i = 0; i < livros.size(); i++) {
-            Livro livro = livros.get(i);
-            if (livro.getCodigo().equals(codigo)) {
-                livros.remove(i);
-                encontrado = true;
-                break;
-            }
-        }
+        // Que isso?
+        // List<Livro> livros = listarLivros();
+
+        // for (int i = 0; i < livros.size(); i++) {
+        // Livro livro = livros.get(i);
+        // if (livro.getCodigo().equals(codigo)) {
+        // livros.remove(i);
+        // encontrado = true;
+        // break;
+        // }
+        // }
 
         if (encontrado) {
-            return (gravaLivro(livros));
+            return (gravarLivro(listaDeLivros));
         } else {
             System.out.println("Código não encontrado: " + codigo);
             return false;

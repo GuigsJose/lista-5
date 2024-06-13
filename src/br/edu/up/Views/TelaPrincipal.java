@@ -7,7 +7,6 @@ import br.edu.up.Controllers.JogoController;
 import br.edu.up.Models.Jogo;
 import br.edu.up.Models.Filme;
 
-
 import br.edu.up.Controllers.JogoController;
 import br.edu.up.Models.Jogo;
 
@@ -138,7 +137,6 @@ public class TelaPrincipal {
         Livro livro = new Livro(codigo, titulo, isbn, ano, categoria);
         controleLivro.incluirLivro(livro);
 
-
     }
 
     public void MostrarmenuFilme() {
@@ -208,10 +206,8 @@ public class TelaPrincipal {
         System.out.println("Digite o ano lançamento do Filme: ");
         int anoLancamento = leitor.nextInt();
 
-
         Filme filme = new Filme(id, nome, genero, diretor, anoLancamento);
         filmeController.incluirFilme(filme);
-
 
     }
 
@@ -269,7 +265,7 @@ public class TelaPrincipal {
 
     public void incluirJogo() {
         Scanner leitor = new Scanner(System.in);
-        
+
         System.out.println("Digite o Código do jogo: ");
         String id = leitor.nextLine();
 
@@ -287,20 +283,20 @@ public class TelaPrincipal {
 
     }
 
-    public void atualizar(){
+    public void atualizar() {
         Scanner leitor = new Scanner(System.in);
-       
+
         System.out.println("Digite o as infomações do jogo que você deseja atualizar");
-       
+
         System.out.println("Digite o Código: ");
         String id = leitor.nextLine();
-       
+
         System.out.println("Digite o nome: ");
         String nome = leitor.nextLine();
-        
+
         System.out.println("Digite o genero: ");
         String genero = leitor.nextLine();
-        
+
         System.out.println("Digite o ano: ");
         int ano = leitor.nextInt();
 
@@ -309,11 +305,11 @@ public class TelaPrincipal {
 
     public void deletarJogo() {
         Scanner leitor = new Scanner(System.in);
-        
+
         System.out.println("Digite o Código do jogo que você deseja deletar: ");
         String id = leitor.nextLine();
 
-        jogoController.deletarJogo(id);
+        jogoController.deletarFuncionario(id);
     }
 
 }

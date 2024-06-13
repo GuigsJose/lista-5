@@ -1,26 +1,28 @@
 package br.edu.up.Controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 import br.edu.up.DAO.JogoDAO;
 import br.edu.up.Models.Jogo;
+import br.edu.up.Models.Enums.Categoria;
 
 public class JogoController {
 
     private JogoDAO daos = new JogoDAO();
-    private List<Jogo> jogos;
+    private List<Jogo> jogos = new ArrayList<Jogo>();
 
     public JogoController() {
         this.jogos = daos.listarJogos();
     }
 
     // Criar jogo
-    public String adicionar(String id, String nome, String genero, int ano) {
-        try{
-            Jogo jogo = new Jogo(id, nome, genero, ano);
+    public String adicionar(int id, String nome, int ano, Categoria categoria) {
+        try {
+            Jogo jogo = new Jogo(id, nome, categoria, ano);
             jogos.add(jogo);
             daos.adicionarJogos(jogos);
             return "Jogo adicionado com sucesso!";
-        } catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             return "Jogo não adicionado " + e;
         }
     }
@@ -31,9 +33,9 @@ public class JogoController {
     }
 
     // atualizar
-    public String atualizarJogo(String id, String nome, String genero, int ano) {
+    public String atualizarJogo(int id, String nome, Categoria categoria, int ano) {
         try {
-            Jogo novoJogo = new Jogo(id, nome, genero, ano);
+            Jogo novoJogo = new Jogo(id, nome, categoria, ano);
             daos.atualizarJogo(novoJogo);
             return "Livro Atualizado com sucesso!";
 
@@ -44,7 +46,7 @@ public class JogoController {
     }
 
     // delete
-    public String deletarJogo(String id) {
+    public String deletarJogo(int id) {
         boolean deletado = daos.deletarJogo(id);
         if (deletado) {
             return "Livro deletado com sucesso";

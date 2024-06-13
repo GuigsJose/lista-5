@@ -17,15 +17,14 @@ public class LivroController {
     private LivroDAO daos = new LivroDAO();
     private List<Livro> livros;
 
-    public LivroController(){
+    public LivroController() {
         this.livros = daos.listarLivros();
     }
 
-    //Criar
-    public void incluirLivro(Livro livro){
+    // Criar
+    public void incluirLivro(Livro livro) {
         daos.adicionarLivro(livro);
     }
-
 
     // Listar livros
     public List<Livro> listarLivros() {
@@ -38,11 +37,11 @@ public class LivroController {
     }
 
     // delete
-    public void deletarLivro(String codigo) {
+    public void deletarLivro(int codigo) {
         daos.deletarLivro(codigo);
     }
 
-    public void salvarDados(){
-        daos.gravaLivro(livros);
+    public void salvarDados() {
+        daos.gravarLivro(livros);
     }
 }

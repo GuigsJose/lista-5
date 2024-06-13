@@ -28,4 +28,8 @@ public class Cliente extends Pessoa {
         Tipo = tipo;
     }
 
+    public String toCsv() {
+        return Codigo + "," + Nome + "," + Documento + "," + Idade + "," + Tipo + "," + Endereco;
+    }
+
 }

@@ -28,4 +28,8 @@ public class Funcionario extends Pessoa {
         Cargo = cargo;
     }
 
+    public String toCsv() {
+        return Codigo + "," + Nome + "," + Documento + "," + Idade + "," + Cargo + "," + Endereco;
+    }
+
 }

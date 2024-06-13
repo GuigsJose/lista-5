@@ -10,19 +10,21 @@ import java.util.List;
 import java.util.Scanner;
 
 import br.edu.up.Models.Filme;
-import br.edu.up.Models.Livro;
+import br.edu.up.Models.Enums.Categoria;
 
 public class FilmeDAO {
 
-    /* @author João: foi criado DAO baseado em livros, 
-    feito algumas alterações necessárias.
-     assim como as outras. */
+    /*
+     * @author João: foi criado DAO baseado em livros,
+     * feito algumas alterações necessárias.
+     * assim como as outras.
+     */
 
     private String header = "";
-    private String arquivo = "C:\\Users\\João Gabriel\\OneDrive\\Área de Trabalho\\UP\\_java-aula\\lista-5\\bin\\br\\edu\\up\\DAO\\Filmes.Csv";
+    private String arquivo = "C:\\Java-Project\\lista-05\\Biblioteca\\src\\br\\edu\\up\\DAO\\Filmes.csv";
+    List<Filme> listaDeFilmes = new ArrayList<Filme>();
 
     public List<Filme> listarFilmes() {
-        List<Filme> listaDeFilmes = new ArrayList<>();
 
         try {
             File arquivoFilmes = new File(arquivo);
@@ -33,14 +35,14 @@ public class FilmeDAO {
                 String linha = sc.nextLine();
                 String[] dados = linha.split(";");
 
-                String id = dados[0];
-                if (id != null && !id.equals("")) {
+                int id = Integer.parseInt(dados[0]);
+                if (id != 0) {
                     String nome = dados[1];
-                    String genero = dados[2];
+                    Categoria categoria = Categoria.valueOf(dados[2]);
                     String diretor = dados[3];
                     int anoLancamento = Integer.parseInt(dados[4]);
 
-                    Filme filme = new Filme(id, nome, genero, diretor, anoLancamento);
+                    Filme filme = new Filme(id, nome, diretor, anoLancamento, categoria);
                     listaDeFilmes.add(filme);
                 }
             }
@@ -54,14 +56,12 @@ public class FilmeDAO {
 
     // CREATE
     public boolean adicionarFilme(Filme filme) {
-          List<Filme> filmes = listarFilmes();
-        filmes.add(filme);
-        return gravaFilme(filmes);
+        listaDeFilmes.add(filme);
+        return gravarFilme(listaDeFilmes);
     }
 
-    public boolean gravaFilme(List<Filme> filmes){
-        try{
-
+    public boolean gravarFilme(List<Filme> filmes) {
+        try {
             FileWriter salvaArquivo = new FileWriter(arquivo);
             PrintWriter salvar = new PrintWriter(salvaArquivo);
 
@@ -74,52 +74,55 @@ public class FilmeDAO {
 
             return true;
 
-
-        }catch(IOException e){
+        } catch (IOException e) {
             System.out.println("Não foi possivel gravar o arquivo");
         }
         return false;
-            
+
     }
 
     // UPDATE
     public boolean atualizarFilme(Filme filme) {
-        List<Filme> filmes = listarFilmes();
-        boolean encontrado = false;
+        boolean encontrado = listaDeFilmes.equals(filme);
 
-        for (int i = 0; i < filmes.size(); i++) {
-            Filme f = filmes.get(i);
-            if (filme.getId().equals(f.getId())) {
-                filmes.set(i, filme);
-                encontrado = true;
-                break;
-            }
-        }
+        // ISSO NAO EXISTE SER FEITO COM UMA COLLECTIONS
+        // for (int i = 0; i < listaDeFilmes.size(); i++) {
+        // if (listaDeFilmes.equals(filme)) {
+        // listaDeFilmes.set(i, filme);
+        // encontrado = true;
+        // break;
+        // }
+        // }
 
         if (encontrado) {
-            return gravaFilme(filmes);
+            int index = listaDeFilmes.indexOf(filme);
+            listaDeFilmes.add(index, filme);
+            return gravarFilme(listaDeFilmes);
         } else {
-            System.out.println("id não encontrado: " + filme.getId());
+            System.out.println("id não encontrado: " + filme.getCodigo());
             return false;
         }
     }
 
     // DELETE
-    public boolean deletarFilme(String id) {
-        List<Filme> filmes = listarFilmes();
-        boolean encontrado = false;
+    public boolean deletarFilme(int id) {
+        boolean encontrado = listaDeFilmes.removeIf(x -> x.getCodigo() == id);
 
-        for (int i = 0; i < filmes.size(); i++) {
-            Filme filme = filmes.get(i);
-            if (filme.getId().equals(id)) {
-                filmes.remove(i);
-                encontrado = true;
-                break;
-            }
-        }
+        // Que isso?
+        // List<Filme> filmes = listarFilmes();
+        // boolean encontrado = false;
+
+        // for (int i = 0; i < filmes.size(); i++) {
+        // Filme filme = filmes.get(i);
+        // if (filme.getId().equals(id)) {
+        // filmes.remove(i);
+        // encontrado = true;
+        // break;
+        // }
+        // }
 
         if (encontrado) {
-            return gravaFilme(filmes);
+            return gravarFilme(listaDeFilmes);
         } else {
             System.out.println("Código não encontrado: " + id);
             return false;
