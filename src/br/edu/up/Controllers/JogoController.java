@@ -16,15 +16,16 @@ public class JogoController {
     }
 
     // Criar jogo
-    public String adicionar(int id, String nome, int ano, Categoria categoria) {
-        try {
-            Jogo jogo = new Jogo(id, nome, categoria, ano);
-            jogos.add(jogo);
-            daos.adicionarJogos(jogos);
-            return "Jogo adicionado com sucesso!";
-        } catch (IllegalArgumentException e) {
-            return "Jogo não adicionado " + e;
-        }
+    public void adicionarJogo(Jogo jogo) {
+        // try {
+        //     Jogo jogo = new Jogo(id, nome, categoria, ano);
+        //     jogos.add(jogo);
+        //     daos.adicionarJogos(jogos);
+        //     return "Jogo adicionado com sucesso!";
+        // } catch (IllegalArgumentException e) {
+        //     return "Jogo não adicionado " + e;
+        // }
+        daos.adicionarJogos(jogos);
     }
 
     // Listar jogos
@@ -53,6 +54,11 @@ public class JogoController {
         } else {
             return "Código não encontrado: " + id;
         }
+    }
+
+
+    public void salvarDados() {
+        daos.gravarJogo(jogos);
     }
 
 }

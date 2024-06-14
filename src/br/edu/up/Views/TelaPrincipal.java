@@ -75,11 +75,12 @@ public class TelaPrincipal {
 
     public void MostrarmenuLocadora() {
         System.out.println("** Locadora **");
-        System.out.println("1. Cadastrar Locadora");
-        System.out.println("2. Atualizar Livro");
-        System.out.println("3. Listar Livros");
-        System.out.println("4. Deletar Livro");
-        System.out.println("5. Voltar ao Menu Principal");
+        System.out.println("1. Mostrar Informações");
+        System.out.println("2. Menu Funcionario");
+        System.out.println("3. Menu Livro");
+        System.out.println("4. Menu Filme");
+        System.out.println("5. Menu Jogo");
+        System.out.println("6. Menu Cliente");
         System.out.println("6. Sair");
         /*
          * Luis: Menu
@@ -95,7 +96,6 @@ public class TelaPrincipal {
                     System.out.println("      CRIAR LOCADORA");
                     System.out.println("----------------------------");
                     CriarLocadora();
-
                     break;
                 case "2":
                     System.out.println("----------------------------");
@@ -121,6 +121,63 @@ public class TelaPrincipal {
                     System.out.println("Saindo do sistema...");
                     leitor.close();
                     controleLivro.salvarDados();
+                    return;
+                default:
+                    System.out.println("Opção inválida, Por gentileza escolha opção válida e tente novamente.");
+            }
+        }
+    }
+
+    public void MostrarmenuFuncionario() {
+        System.out.println("** Funcionario **");
+        System.out.println("1. Cadastrar Funcionario");
+        System.out.println("2. Atualizar Funcionario");
+        System.out.println("3. Listar Funcionario");
+        System.out.println("4. Deletar Funcionario");
+        System.out.println("5. Voltar ao Menu Principal");
+        System.out.println("6. Sair");
+        /*
+         * Luis: Menu
+         * ESSA WHILE VAMOS MODIFICANDO CONFORME A NECESSIDADE
+         */
+        Scanner leitor = new Scanner(System.in);
+        while (true) {
+            String opL = leitor.nextLine();
+
+            switch (opL) {
+                case "1":
+                    System.out.println("----------------------------");
+                    System.out.println("      ADICIONAR FUNCIONARIO");
+                    System.out.println("----------------------------");
+                    AdicionarFuncionario();
+                    break;
+                case "2":
+                    System.out.println("----------------------------");
+                    System.out.println("     ATUALIZAR FUNCIONARIO");
+                    System.out.println("----------------------------");
+                    
+                    break;
+                case "3":
+                    System.out.println("----------------------------");
+                    System.out.println("       LISTAR FUNCIONARIO");
+                    System.out.println("----------------------------");
+
+                    break;
+                case "4":
+                    System.out.println("----------------------------");
+                    System.out.println("      DELETAR FUNCIONARIO");
+                    System.out.println("----------------------------");
+                    break;
+                case "5":
+                    menuPrinciapl();
+                    funcionarioController.salvarDados();
+                    locadoraController.AdicionarFuncionario(funcionarioController.listarFuncionarios());
+                    break;
+                case "6":
+                    System.out.println("Saindo do sistema...");
+                    leitor.close();
+                    funcionarioController.salvarDados();
+                    locadoraController.AdicionarFuncionario(funcionarioController.listarFuncionarios());
                     return;
                 default:
                     System.out.println("Opção inválida, Por gentileza escolha opção válida e tente novamente.");
@@ -156,7 +213,7 @@ public class TelaPrincipal {
                     System.out.println("----------------------------");
                     System.out.println("     ATUALIZAR LIVRO");
                     System.out.println("----------------------------");
-
+                    
                     break;
                 case "3":
                     System.out.println("----------------------------");
@@ -171,11 +228,14 @@ public class TelaPrincipal {
                     break;
                 case "5":
                     menuPrinciapl();
+                    controleLivro.salvarDados();
+                    locadoraController.AdicionarLivros(controleLivro.listarLivros());
                     break;
                 case "6":
                     System.out.println("Saindo do sistema...");
                     leitor.close();
                     controleLivro.salvarDados();
+                    locadoraController.AdicionarLivros(controleLivro.listarLivros());
                     return;
                 default:
                     System.out.println("Opção inválida, Por gentileza escolha opção válida e tente novamente.");
@@ -270,6 +330,8 @@ public class TelaPrincipal {
                     break;
                 case "5":
                     menuPrinciapl();
+                    filmeController.salvarDados();
+                    locadoraController.AdicionarFilmes(filmeController.listarFilmes());
                     break;
                 case "6":
                     System.out.println("Saindo do sistema...");
@@ -352,10 +414,14 @@ public class TelaPrincipal {
                     break;
                 case "5":
                     menuPrinciapl();
+                    jogoController.salvarDados();
+                    locadoraController.AdicionarJogos(jogoController.listarJogos());
                     break;
                 case "6":
                     System.out.println("Saindo do sistema...");
                     leitor.close();
+                    jogoController.salvarDados();
+                    locadoraController.AdicionarJogos(jogoController.listarJogos());
                     return;
                 default:
                     System.out.println("Opção inválida, Por gentileza escolha opção válida e tente novamente.");
@@ -385,12 +451,13 @@ public class TelaPrincipal {
         System.out.println("Digite o ano do jogo: ");
         int ano = leitor.nextInt();
 
-        String resultado = jogoController.adicionar(id, nome, ano, categoria);
-        System.out.println(resultado);
+        Jogo jogo = new Jogo(categoriaIndex, nome, categoria, ano);
+
+        jogoController.adicionarJogo(jogo);
 
     }
 
-    public void atualizar() {
+    public void atualizarJogo() {
         Scanner leitor = new Scanner(System.in);
 
         System.out.println("Digite o as infomações do jogo que você deseja atualizar");
@@ -456,7 +523,7 @@ public class TelaPrincipal {
         int codigo = leitor.nextInt();
 
         Funcionario funcionario = new Funcionario(documento, nome, idade, endereco, cargo, codigo);
-        
+        funcionarioController.incluirFuncionario(funcionario);
     }
 
 }

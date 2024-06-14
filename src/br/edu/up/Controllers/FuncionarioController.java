@@ -53,4 +53,7 @@ public class FuncionarioController {
       return "Código não encontrado: " + id;
     }
   }
+  public void salvarDados() {
+    daos.adicionarFuncionarios(funcionarios);
+}
 }

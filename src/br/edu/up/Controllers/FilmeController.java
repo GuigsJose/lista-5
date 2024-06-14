@@ -47,4 +47,8 @@ public class FilmeController {
             return "Código não encontrado: " + id;
         }
     }
+
+    public void salvarDados() {
+        daos.gravarFilme(filmes);
+    }
 }
