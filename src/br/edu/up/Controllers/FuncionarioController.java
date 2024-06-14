@@ -21,8 +21,8 @@ public class FuncionarioController {
   }
 
   // Criar
-  public void incluirCliente(Funcionario cliente) {
-    daos.gravarFuncionario(cliente);
+  public void incluirFuncionario(Funcionario funcionario) {
+    daos.gravarFuncionario(funcionario);
   }
 
   // Listar filmes

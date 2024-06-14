@@ -3,10 +3,11 @@ package br.edu.up.Views;
 import java.util.Scanner;
 
 import br.edu.up.Controllers.FilmeController;
+import br.edu.up.Controllers.FuncionarioController;
 import br.edu.up.Controllers.JogoController;
 import br.edu.up.Models.Jogo;
 import br.edu.up.Models.Filme;
-
+import br.edu.up.Models.Funcionario;
 import br.edu.up.Controllers.JogoController;
 import br.edu.up.Models.Jogo;
 
@@ -14,6 +15,7 @@ import br.edu.up.Controllers.LivroController;
 import br.edu.up.Controllers.LocadoraController;
 import br.edu.up.Models.Livro;
 import br.edu.up.Models.Enums.Categoria;
+import br.edu.up.Models.Enums.TipoCargo;
 
 public class TelaPrincipal {
 
@@ -27,6 +29,7 @@ public class TelaPrincipal {
     LivroController controleLivro = new LivroController();
     JogoController jogoController = new JogoController();
     FilmeController filmeController = new FilmeController();
+    FuncionarioController funcionarioController = new FuncionarioController();
 
     public void menuPrinciapl() {
         /* Luis: Opções do Menu */
@@ -401,6 +404,39 @@ public class TelaPrincipal {
         int id = leitor.nextInt();
 
         jogoController.deletarJogo(id);
+    }
+
+
+    public void AdicionarFuncionario(){
+        Scanner leitor = new Scanner(System.in);
+
+        System.out.println("Informe o Documento: ");
+        String documento = leitor.nextLine();
+
+        System.out.println(":Informe o Nome: ");
+        String nome = leitor.nextLine();
+
+        System.out.println("Informe a Idade:");
+        int idade = leitor.nextInt();
+
+        System.out.print("Informe o endereço: ");
+        String endereco = leitor.nextLine();
+
+        System.out.println("Escolha um Cargo:");
+        for (TipoCargo cargo : TipoCargo.values()) {
+            System.out.println(cargo.ordinal() + " - " + cargo.getDescricao());
+        }
+
+        System.out.print("Digite o número correspondente ao cargo: ");
+        int cargoIndex = leitor.nextInt();
+
+        TipoCargo cargo = TipoCargo.values()[cargoIndex];
+
+        System.out.println("Digite o codigo: ");
+        int codigo = leitor.nextInt();
+
+        Funcionario funcionario = new Funcionario(documento, nome, idade, endereco, cargo, codigo);
+        
     }
 
 }
