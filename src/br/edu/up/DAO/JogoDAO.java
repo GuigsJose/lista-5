@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import br.edu.up.Models.Jogo;
+import br.edu.up.Models.Livro;
 import br.edu.up.Models.Enums.Categoria;
 
 public class JogoDAO {
@@ -127,4 +128,25 @@ public class JogoDAO {
         }
         return listaDeJogos;
     }
+
+    public boolean gravarJogo(List<Jogo> jogo) {
+        try {
+            FileWriter salvaArquivo = new FileWriter(arquivo);
+            PrintWriter salvar = new PrintWriter(salvaArquivo);
+
+            salvar.println(header);
+
+            for (Jogo jg : jogo) {
+                salvar.println(jg.toCsv());
+            }
+            salvar.close();
+
+            return true;
+
+        } catch (IOException e) {
+            System.out.println("Não foi possivel gravar o arquivo");
+        }
+        return false;
+    }
+
 }
