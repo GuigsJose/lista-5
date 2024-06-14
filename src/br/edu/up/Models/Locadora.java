@@ -28,24 +28,24 @@ public class Locadora {
         AnoFundacao = ano;
     }
 
-    public void AdicionarFuncionario(Funcionario funcionario) {
-        Funcionarios.add(funcionario);
+    public void AdicionarFuncionarios(List<Funcionario> funcionarios) {
+        Funcionarios = funcionarios;
     }
 
-    public void AdicionarFilme(Filme filme) {
-        Filmes.add(filme);
+    public void AdicionarFilmes(List<Filme> filmes) {
+        Filmes = filmes;
     }
 
-    public void AdicionarLivro(Livro livro) {
-        Livros.add(livro);
+    public void AdicionarLivros(List<Livro> livros) {
+        Livros = livros;
     }
 
-    public void AdicionarJogos(Jogo jogo) {
-        Jogos.add(jogo);
+    public void AdicionarJogos(List<Jogo> jogos) {
+        Jogos = jogos;
     }
 
-    public void AdicionarCliente(Cliente cliente) {
-        Clientes.add(cliente);
+    public void AdicionarClientes(List<Cliente> clientes) {
+        Clientes = clientes;
     }
 
     public List<Funcionario> GetFuncionario(int codigo) {
@@ -106,5 +106,37 @@ public class Locadora {
 
     public void ExcluirCliente(int codigo) {
         Clientes.remove(codigo);
+    }
+
+    public String getNome() {
+        return Nome;
+    }
+
+    public void setNome(String nome) {
+        this.Nome = nome;
+    }
+
+    public String getEndereco() {
+        return Endereco;
+    }
+
+    public void setEndereco(String endereco) {
+        this.Endereco = endereco;
+    }
+
+    public String getCnpj() {
+        return Cnpj;
+    }
+
+    public void setCnpj(String cnpj) {
+        this.Cnpj = cnpj;
+    }
+
+    public int getAnoFundacao() {
+        return AnoFundacao;
+    }
+
+    public void setAnoFundacao(int anoFundacao) {
+        this.AnoFundacao = anoFundacao;
     }
 }
