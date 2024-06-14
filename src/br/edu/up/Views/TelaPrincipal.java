@@ -11,7 +11,9 @@ import br.edu.up.Controllers.JogoController;
 import br.edu.up.Models.Jogo;
 
 import br.edu.up.Controllers.LivroController;
+import br.edu.up.Controllers.LocadoraController;
 import br.edu.up.Models.Livro;
+import br.edu.up.Models.Enums.Categoria;
 
 public class TelaPrincipal {
 
@@ -19,6 +21,8 @@ public class TelaPrincipal {
      * @author João: precisamos juntar o que forem terminando nessa View,
      * creio eu não ser necessário outra view.
      */
+
+    LocadoraController locadoraController = new LocadoraController();
 
     LivroController controleLivro = new LivroController();
     JogoController jogoController = new JogoController();
@@ -30,7 +34,8 @@ public class TelaPrincipal {
         System.out.println("1. Livro");
         System.out.println("2. Filme");
         System.out.println("3. Jogo");
-        System.out.println("4. Sair");
+        System.out.println("4. Locadora");
+        System.out.println("5. Sair");
         System.out.print("Escolha uma opção: ");
     }
 
@@ -51,12 +56,70 @@ public class TelaPrincipal {
                     MostrarmenuJogo();
                     break;
                 case "4":
+                    MostrarmenuLocadora();
+                    break;
+                case "5":
                     System.out.println("Saindo do sistema");
                     leitor.close();
                     return;
                 default:
                     System.out.println("Opção inválida");
                     break;
+            }
+        }
+    }
+
+    public void MostrarmenuLocadora() {
+        System.out.println("** Locadora **");
+        System.out.println("1. Cadastrar Locadora");
+        System.out.println("2. Atualizar Livro");
+        System.out.println("3. Listar Livros");
+        System.out.println("4. Deletar Livro");
+        System.out.println("5. Voltar ao Menu Principal");
+        System.out.println("6. Sair");
+        /*
+         * Luis: Menu
+         * ESSA WHILE VAMOS MODIFICANDO CONFORME A NECESSIDADE
+         */
+        Scanner leitor = new Scanner(System.in);
+        while (true) {
+            String opL = leitor.nextLine();
+
+            switch (opL) {
+                case "1":
+                    System.out.println("----------------------------");
+                    System.out.println("      ADICIONAR LOCADORA");
+                    System.out.println("----------------------------");
+                    incluirLivro();
+
+                    break;
+                case "2":
+                    System.out.println("----------------------------");
+                    System.out.println("     ATUALIZAR LIVRO");
+                    System.out.println("----------------------------");
+
+                    break;
+                case "3":
+                    System.out.println("----------------------------");
+                    System.out.println("       LISTAR LIVRO");
+                    System.out.println("----------------------------");
+
+                    break;
+                case "4":
+                    System.out.println("----------------------------");
+                    System.out.println("      DELETAR LIVROS");
+                    System.out.println("----------------------------");
+                    break;
+                case "5":
+                    menuPrinciapl();
+                    break;
+                case "6":
+                    System.out.println("Saindo do sistema...");
+                    leitor.close();
+                    controleLivro.salvarDados();
+                    return;
+                default:
+                    System.out.println("Opção inválida, Por gentileza escolha opção válida e tente novamente.");
             }
         }
     }
@@ -120,7 +183,7 @@ public class TelaPrincipal {
         /* Luis: Incluir Livro */
         Scanner leitor = new Scanner(System.in);
         System.out.println("Digite o Código do livro: ");
-        String codigo = leitor.nextLine();
+        int codigo = leitor.nextInt();
 
         System.out.println("Digite o titulo do livro: ");
         String titulo = leitor.nextLine();
@@ -131,8 +194,15 @@ public class TelaPrincipal {
         System.out.println("Digite o ANO do livro: ");
         int ano = leitor.nextInt();
 
-        System.out.println("Digite a categoria do livro: ");
-        String categoria = leitor.nextLine();
+        System.out.println("Escolha uma categoria:");
+        for (Categoria categoria : Categoria.values()) {
+            System.out.println(categoria.ordinal() + " - " + categoria.getCategoria());
+        }
+
+        System.out.print("Digite o número correspondente à categoria: ");
+        int categoriaIndex = leitor.nextInt();
+
+        Categoria categoria = Categoria.values()[categoriaIndex];
 
         Livro livro = new Livro(codigo, titulo, isbn, ano, categoria);
         controleLivro.incluirLivro(livro);
@@ -192,13 +262,20 @@ public class TelaPrincipal {
         /* Luis: Incluir Filme */
         Scanner leitor = new Scanner(System.in);
         System.out.println("Digite o id do Filme: ");
-        String id = leitor.nextLine();
+        int id = leitor.nextInt();
 
         System.out.println("Digite o nome do Filme: ");
         String nome = leitor.nextLine();
 
-        System.out.println("Digite o genero do Filme: ");
-        String genero = leitor.nextLine();
+        System.out.println("Escolha uma categoria:");
+        for (Categoria categoria : Categoria.values()) {
+            System.out.println(categoria.ordinal() + " - " + categoria.getCategoria());
+        }
+
+        System.out.print("Digite o número correspondente à categoria: ");
+        int categoriaIndex = leitor.nextInt();
+
+        Categoria categoria = Categoria.values()[categoriaIndex];
 
         System.out.println("Digite o nome do diretor do Filme: ");
         String diretor = leitor.nextLine();
@@ -206,7 +283,7 @@ public class TelaPrincipal {
         System.out.println("Digite o ano lançamento do Filme: ");
         int anoLancamento = leitor.nextInt();
 
-        Filme filme = new Filme(id, nome, genero, diretor, anoLancamento);
+        Filme filme = new Filme(id, nome, diretor, anoLancamento, categoria);
         filmeController.incluirFilme(filme);
 
     }
@@ -267,18 +344,25 @@ public class TelaPrincipal {
         Scanner leitor = new Scanner(System.in);
 
         System.out.println("Digite o Código do jogo: ");
-        String id = leitor.nextLine();
+        int id = leitor.nextInt();
 
         System.out.println("Digite o nome do jogo: ");
         String nome = leitor.nextLine();
 
-        System.out.println("Digite o genero do jogo: ");
-        String genero = leitor.nextLine();
+        System.out.println("Escolha uma categoria:");
+        for (Categoria categoria : Categoria.values()) {
+            System.out.println(categoria.ordinal() + " - " + categoria.getCategoria());
+        }
+
+        System.out.print("Digite o número correspondente à categoria: ");
+        int categoriaIndex = leitor.nextInt();
+
+        Categoria categoria = Categoria.values()[categoriaIndex];
 
         System.out.println("Digite o ano do jogo: ");
         int ano = leitor.nextInt();
 
-        String resultado = jogoController.adicionar(id, nome, genero, ano);
+        String resultado = jogoController.adicionar(id, nome, ano, categoria);
         System.out.println(resultado);
 
     }
@@ -289,27 +373,34 @@ public class TelaPrincipal {
         System.out.println("Digite o as infomações do jogo que você deseja atualizar");
 
         System.out.println("Digite o Código: ");
-        String id = leitor.nextLine();
+        int id = leitor.nextInt();
 
         System.out.println("Digite o nome: ");
         String nome = leitor.nextLine();
 
-        System.out.println("Digite o genero: ");
-        String genero = leitor.nextLine();
+        System.out.println("Escolha uma categoria:");
+        for (Categoria categoria : Categoria.values()) {
+            System.out.println(categoria.ordinal() + " - " + categoria.getCategoria());
+        }
+
+        System.out.print("Digite o número correspondente à categoria: ");
+        int categoriaIndex = leitor.nextInt();
+
+        Categoria categoria = Categoria.values()[categoriaIndex];
 
         System.out.println("Digite o ano: ");
         int ano = leitor.nextInt();
 
-        jogoController.atualizarJogo(id, nome, genero, ano);
+        jogoController.atualizarJogo(id, nome, categoria, ano);
     }
 
     public void deletarJogo() {
         Scanner leitor = new Scanner(System.in);
 
         System.out.println("Digite o Código do jogo que você deseja deletar: ");
-        String id = leitor.nextLine();
+        int id = leitor.nextInt();
 
-        jogoController.deletarFuncionario(id);
+        jogoController.deletarJogo(id);
     }
 
 }
