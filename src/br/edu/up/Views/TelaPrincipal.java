@@ -13,6 +13,7 @@ import br.edu.up.Models.Jogo;
 import br.edu.up.Controllers.LivroController;
 import br.edu.up.Controllers.LocadoraController;
 import br.edu.up.Models.Livro;
+import br.edu.up.Models.Locadora;
 import br.edu.up.Models.Enums.Categoria;
 
 public class TelaPrincipal {
@@ -88,16 +89,16 @@ public class TelaPrincipal {
             switch (opL) {
                 case "1":
                     System.out.println("----------------------------");
-                    System.out.println("      ADICIONAR LOCADORA");
+                    System.out.println("      CRIAR LOCADORA");
                     System.out.println("----------------------------");
-                    incluirLivro();
+                    CriarLocadora();
 
                     break;
                 case "2":
                     System.out.println("----------------------------");
-                    System.out.println("     ATUALIZAR LIVRO");
+                    System.out.println("     ADICIONAR FUNCIONARIOS");
                     System.out.println("----------------------------");
-
+                    AdicionarFuncionario();
                     break;
                 case "3":
                     System.out.println("----------------------------");
@@ -177,6 +178,25 @@ public class TelaPrincipal {
                     System.out.println("Opção inválida, Por gentileza escolha opção válida e tente novamente.");
             }
         }
+    }
+
+    public void CriarLocadora() {
+        /* Luis: Incluir Livro */
+        Scanner leitor = new Scanner(System.in);
+        System.out.println("Digite o nome da locadora: ");
+        String nome = leitor.nextLine();
+
+        System.out.println("Digite o endereço da locadora: ");
+        String endereco = leitor.nextLine();
+
+        System.out.println("Digite o CNPJ da locadora: ");
+        String cnpj = leitor.nextLine();
+
+        System.out.println("Digite o ano da fundação: ");
+        int ano = leitor.nextInt();
+
+        locadoraController.CriarLocadora(nome, endereco, cnpj, ano);
+
     }
 
     public void incluirLivro() {
