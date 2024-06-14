@@ -155,18 +155,22 @@ public class TelaPrincipal {
                     System.out.println("----------------------------");
                     System.out.println("     ATUALIZAR FUNCIONARIO");
                     System.out.println("----------------------------");
-                    
+                    Funcionario func = AdicionarFuncionario();
+                    funcionarioController.atualizarFuncionario(func);
                     break;
                 case "3":
                     System.out.println("----------------------------");
                     System.out.println("       LISTAR FUNCIONARIO");
                     System.out.println("----------------------------");
-
+                    funcionarioController.listarFuncionarios();
                     break;
                 case "4":
                     System.out.println("----------------------------");
                     System.out.println("      DELETAR FUNCIONARIO");
                     System.out.println("----------------------------");
+                    System.out.println("Informe o código do funcionario:");
+                    int codigo = leitor.nextInt();
+                    funcionarioController.deletarFuncionario(codigo);
                     break;
                 case "5":
                     menuPrinciapl();
@@ -213,7 +217,7 @@ public class TelaPrincipal {
                     System.out.println("----------------------------");
                     System.out.println("     ATUALIZAR LIVRO");
                     System.out.println("----------------------------");
-                    
+
                     break;
                 case "3":
                     System.out.println("----------------------------");
@@ -493,8 +497,7 @@ public class TelaPrincipal {
         jogoController.deletarJogo(id);
     }
 
-
-    public void AdicionarFuncionario(){
+    public Funcionario AdicionarFuncionario() {
         Scanner leitor = new Scanner(System.in);
 
         System.out.println("Informe o Documento: ");
@@ -524,6 +527,7 @@ public class TelaPrincipal {
 
         Funcionario funcionario = new Funcionario(documento, nome, idade, endereco, cargo, codigo);
         funcionarioController.incluirFuncionario(funcionario);
+        return funcionario;
     }
 
 }

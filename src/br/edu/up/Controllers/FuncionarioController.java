@@ -31,10 +31,10 @@ public class FuncionarioController {
   }
 
   // Atualizar
-  public String atualizarFuncionario(String documento, String nome, int idade, String endereco, TipoCargo cargo,
-      int codigo) {
+  public String atualizarFuncionario(Funcionario func) {
     try {
-      Funcionario funcionario = new Funcionario(documento, nome, idade, endereco, cargo, codigo);
+      Funcionario funcionario = new Funcionario(func.getDocumento(), func.getNome(), func.getIdade(),
+          func.getEndereco(), func.getCargo(), func.getCodigo());
       funcionarios.add(funcionario);
       daos.atualizarFuncionario(funcionario);
       return "Funcionario Atualizado com sucesso!";
@@ -53,7 +53,8 @@ public class FuncionarioController {
       return "Código não encontrado: " + id;
     }
   }
+
   public void salvarDados() {
     daos.adicionarFuncionarios(funcionarios);
-}
+  }
 }
