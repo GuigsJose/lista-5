@@ -18,12 +18,12 @@ public class JogoController {
     // Criar jogo
     public void adicionarJogo(Jogo jogo) {
         // try {
-        //     Jogo jogo = new Jogo(id, nome, categoria, ano);
-        //     jogos.add(jogo);
-        //     daos.adicionarJogos(jogos);
-        //     return "Jogo adicionado com sucesso!";
+        // Jogo jogo = new Jogo(id, nome, categoria, ano);
+        // jogos.add(jogo);
+        // daos.adicionarJogos(jogos);
+        // return "Jogo adicionado com sucesso!";
         // } catch (IllegalArgumentException e) {
-        //     return "Jogo não adicionado " + e;
+        // return "Jogo não adicionado " + e;
         // }
         daos.adicionarJogos(jogos);
     }
@@ -34,9 +34,9 @@ public class JogoController {
     }
 
     // atualizar
-    public String atualizarJogo(int id, String nome, Categoria categoria, int ano) {
+    public String atualizarJogo(Jogo jg) {
         try {
-            Jogo novoJogo = new Jogo(id, nome, categoria, ano);
+            Jogo novoJogo = new Jogo(jg.getCodigo(), jg.getNome(), jg.getCategoria(), jg.getAno());
             daos.atualizarJogo(novoJogo);
             return "Livro Atualizado com sucesso!";
 
@@ -55,7 +55,6 @@ public class JogoController {
             return "Código não encontrado: " + id;
         }
     }
-
 
     public void salvarDados() {
         daos.gravarJogo(jogos);

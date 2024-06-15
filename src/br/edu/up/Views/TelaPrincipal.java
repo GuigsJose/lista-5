@@ -2,10 +2,12 @@ package br.edu.up.Views;
 
 import java.util.Scanner;
 
+import br.edu.up.Controllers.ClienteController;
 import br.edu.up.Controllers.FilmeController;
 import br.edu.up.Controllers.FuncionarioController;
 import br.edu.up.Controllers.JogoController;
 import br.edu.up.Models.Jogo;
+import br.edu.up.Models.Cliente;
 import br.edu.up.Models.Filme;
 import br.edu.up.Models.Funcionario;
 import br.edu.up.Controllers.JogoController;
@@ -17,6 +19,7 @@ import br.edu.up.Models.Livro;
 import br.edu.up.Models.Locadora;
 import br.edu.up.Models.Enums.Categoria;
 import br.edu.up.Models.Enums.TipoCargo;
+import br.edu.up.Models.Enums.TipoCliente;
 
 public class TelaPrincipal {
 
@@ -31,6 +34,7 @@ public class TelaPrincipal {
     JogoController jogoController = new JogoController();
     FilmeController filmeController = new FilmeController();
     FuncionarioController funcionarioController = new FuncionarioController();
+    ClienteController clienteController = new ClienteController();
 
     public void menuPrinciapl() {
         /* Luis: Opções do Menu */
@@ -155,7 +159,7 @@ public class TelaPrincipal {
                     System.out.println("----------------------------");
                     System.out.println("     ATUALIZAR FUNCIONARIO");
                     System.out.println("----------------------------");
-                    
+
                     break;
                 case "3":
                     System.out.println("----------------------------");
@@ -178,6 +182,67 @@ public class TelaPrincipal {
                     leitor.close();
                     funcionarioController.salvarDados();
                     locadoraController.AdicionarFuncionario(funcionarioController.listarFuncionarios());
+                    return;
+                default:
+                    System.out.println("Opção inválida, Por gentileza escolha opção válida e tente novamente.");
+            }
+        }
+    }
+
+    public void MostrarmenuCliente() {
+        System.out.println("** Cliente **");
+        System.out.println("1. Cadastrar Cliente");
+        System.out.println("2. Atualizar Cliente");
+        System.out.println("3. Listar Cliente");
+        System.out.println("4. Deletar Cliente");
+        System.out.println("5. Voltar ao Menu Principal");
+        System.out.println("6. Sair");
+        /*
+         * Luis: Menu
+         * ESSA WHILE VAMOS MODIFICANDO CONFORME A NECESSIDADE
+         */
+        Scanner leitor = new Scanner(System.in);
+        while (true) {
+            String opL = leitor.nextLine();
+
+            switch (opL) {
+                case "1":
+                    System.out.println("----------------------------");
+                    System.out.println("      ADICIONAR CLIENTE");
+                    System.out.println("----------------------------");
+                    AdicionarCliente();
+                    break;
+                case "2":
+                    System.out.println("----------------------------");
+                    System.out.println("     ATUALIZAR CLIENTE");
+                    System.out.println("----------------------------");
+                    Cliente cliente = AdicionarCliente();
+                    clienteController.atualizarCliente(cliente);
+                    break;
+                case "3":
+                    System.out.println("----------------------------");
+                    System.out.println("       LISTAR CLIENTE");
+                    System.out.println("----------------------------");
+                    clienteController.listarCliente();
+                    break;
+                case "4":
+                    System.out.println("----------------------------");
+                    System.out.println("      DELETAR CLIENTE");
+                    System.out.println("----------------------------");
+                    System.out.println("Infome o código do cliente");
+                    int codigo = leitor.nextInt();
+                    clienteController.deletarCliente(codigo);
+                    break;
+                case "5":
+                    menuPrinciapl();
+                    clienteController.salvarDados();
+                    locadoraController.AdicionarClientes(clienteController.listarCliente());
+                    break;
+                case "6":
+                    System.out.println("Saindo do sistema...");
+                    leitor.close();
+                    clienteController.salvarDados();
+                    locadoraController.AdicionarClientes(clienteController.listarCliente());
                     return;
                 default:
                     System.out.println("Opção inválida, Por gentileza escolha opção válida e tente novamente.");
@@ -213,7 +278,8 @@ public class TelaPrincipal {
                     System.out.println("----------------------------");
                     System.out.println("     ATUALIZAR LIVRO");
                     System.out.println("----------------------------");
-                    atualizarLivro();
+                    Livro livro = incluirLivro();
+                    controleLivro.atualizarLivro(livro);
                     break;
                 case "3":
                     System.out.println("----------------------------");
@@ -265,7 +331,7 @@ public class TelaPrincipal {
 
     }
 
-    public void incluirLivro() {
+    public Livro incluirLivro() {
         /* Luis: Incluir Livro */
         Scanner leitor = new Scanner(System.in);
         System.out.println("Digite o Código do livro: ");
@@ -293,6 +359,8 @@ public class TelaPrincipal {
         Livro livro = new Livro(codigo, titulo, isbn, ano, categoria);
         controleLivro.incluirLivro(livro);
 
+        return livro;
+
     }
 
     public void MostrarmenuFilme() {
@@ -312,24 +380,28 @@ public class TelaPrincipal {
                     System.out.println("----------------------------");
                     System.out.println("      ADICIONAR FILME");
                     System.out.println("----------------------------");
-
+                    incluirFilme();
                     break;
                 case "2":
                     System.out.println("----------------------------");
                     System.out.println("     ATUALIZAR FILME");
                     System.out.println("----------------------------");
-
+                    Filme filme = incluirFilme();
+                    filmeController.atualizarFilme(filme);
                     break;
                 case "3":
                     System.out.println("----------------------------");
                     System.out.println("       LISTAR FILME");
                     System.out.println("----------------------------");
-
+                    filmeController.listarFilmes();
                     break;
                 case "4":
                     System.out.println("----------------------------");
                     System.out.println("      DELETAR FILMES");
                     System.out.println("----------------------------");
+                    System.out.println("Informe o código do filme:");
+                    int codigo = leitor.nextInt();
+                    filmeController.deletarFilme(codigo);
                     break;
                 case "5":
                     menuPrinciapl();
@@ -346,7 +418,7 @@ public class TelaPrincipal {
         }
     }
 
-    public void incluirFilme() {
+    public Filme incluirFilme() {
         /* Luis: Incluir Filme */
         Scanner leitor = new Scanner(System.in);
         System.out.println("Digite o id do Filme: ");
@@ -373,6 +445,8 @@ public class TelaPrincipal {
 
         Filme filme = new Filme(id, nome, diretor, anoLancamento, categoria);
         filmeController.incluirFilme(filme);
+
+        return filme;
 
     }
 
@@ -401,6 +475,8 @@ public class TelaPrincipal {
                     System.out.println("----------------------------");
                     System.out.println("     ATUALIZAR JOGO");
                     System.out.println("----------------------------");
+                    Jogo jogo = incluirJogo();
+                    jogoController.atualizarJogo(jogo);
 
                     break;
                 case "3":
@@ -432,7 +508,7 @@ public class TelaPrincipal {
         }
     }
 
-    public void incluirJogo() {
+    public Jogo incluirJogo() {
         Scanner leitor = new Scanner(System.in);
 
         System.out.println("Digite o Código do jogo: ");
@@ -457,34 +533,8 @@ public class TelaPrincipal {
         Jogo jogo = new Jogo(categoriaIndex, nome, categoria, ano);
 
         jogoController.adicionarJogo(jogo);
+        return jogo;
 
-    }
-
-    public void atualizarJogo() {
-        Scanner leitor = new Scanner(System.in);
-
-        System.out.println("Digite o as infomações do jogo que você deseja atualizar");
-
-        System.out.println("Digite o Código: ");
-        int id = leitor.nextInt();
-
-        System.out.println("Digite o nome: ");
-        String nome = leitor.nextLine();
-
-        System.out.println("Escolha uma categoria:");
-        for (Categoria categoria : Categoria.values()) {
-            System.out.println(categoria.ordinal() + " - " + categoria.getCategoria());
-        }
-
-        System.out.print("Digite o número correspondente à categoria: ");
-        int categoriaIndex = leitor.nextInt();
-
-        Categoria categoria = Categoria.values()[categoriaIndex];
-
-        System.out.println("Digite o ano: ");
-        int ano = leitor.nextInt();
-
-        jogoController.atualizarJogo(id, nome, categoria, ano);
     }
 
     public void deletarJogo() {
@@ -496,8 +546,7 @@ public class TelaPrincipal {
         jogoController.deletarJogo(id);
     }
 
-
-    public void AdicionarFuncionario(){
+    public void AdicionarFuncionario() {
         Scanner leitor = new Scanner(System.in);
 
         System.out.println("Informe o Documento: ");
@@ -527,6 +576,40 @@ public class TelaPrincipal {
 
         Funcionario funcionario = new Funcionario(documento, nome, idade, endereco, cargo, codigo);
         funcionarioController.incluirFuncionario(funcionario);
+    }
+
+    public Cliente AdicionarCliente() {
+        Scanner leitor = new Scanner(System.in);
+
+        System.out.println("Informe o Documento: ");
+        String documento = leitor.nextLine();
+
+        System.out.println(":Informe o Nome: ");
+        String nome = leitor.nextLine();
+
+        System.out.println("Informe a Idade:");
+        int idade = leitor.nextInt();
+
+        System.out.print("Informe o endereço: ");
+        String endereco = leitor.nextLine();
+
+        System.out.println("Escolha um Cargo:");
+        for (TipoCliente tipo : TipoCliente.values()) {
+            System.out.println(tipo.ordinal() + " - " + tipo.getTipoCliente());
+        }
+
+        System.out.print("Digite o número correspondente ao tipo do cliente: ");
+        int tipoIndex = leitor.nextInt();
+
+        TipoCliente clienteTipo = TipoCliente.values()[tipoIndex];
+
+        System.out.println("Digite o codigo: ");
+        int codigo = leitor.nextInt();
+
+        Cliente cliente = new Cliente(documento, nome, idade, endereco, clienteTipo, codigo);
+        clienteController.incluirCliente(cliente);
+
+        return cliente;
     }
 
 }

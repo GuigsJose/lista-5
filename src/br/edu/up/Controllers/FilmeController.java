@@ -26,9 +26,10 @@ public class FilmeController {
     }
 
     // Atualizar
-    public String atualizarFilme(int id, String nome, Categoria categoria, String diretor, int anoLancamento) {
+    public String atualizarFilme(Filme fm) {
         try {
-            Filme filme = new Filme(id, nome, diretor, anoLancamento, categoria);
+            Filme filme = new Filme(fm.getCodigo(), fm.getNome(), fm.getDiretor(), fm.getAnoLancamento(),
+                    fm.getGenero());
             filmes.add(filme);
             daos.atualizarFilme(filme);
             return "Filme Atualizado com sucesso!";

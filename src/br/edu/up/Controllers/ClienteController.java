@@ -17,6 +17,10 @@ public class ClienteController {
         this.clientes = daos.listarClientes();
     }
 
+    public void salvarDados() {
+        daos.adicionarClientes(clientes);
+    }
+
     // Criar
     public void incluirCliente(Cliente cliente) {
         daos.gravarCliente(cliente);
@@ -28,10 +32,10 @@ public class ClienteController {
     }
 
     // Atualizar
-    public String atualizarCliente(String documento, String nome, int idade, String endereco, TipoCliente tipoCliente,
-            int codigo) {
+    public String atualizarCliente(Cliente cli) {
         try {
-            Cliente cliente = new Cliente(documento, nome, idade, endereco, tipoCliente, codigo);
+            Cliente cliente = new Cliente(cli.getDocumento(), cli.getNome(), cli.getIdade(), cli.getEndereco(),
+                    cli.getTipo(), cli.getCodigo());
             clientes.add(cliente);
             daos.atualizarCliente(cliente);
             return "Cliente Atualizado com sucesso!";
