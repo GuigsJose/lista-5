@@ -39,12 +39,11 @@ public class TelaPrincipal {
     public void menuPrinciapl() {
         /* Luis: Opções do Menu */
         System.out.println("** Bem-Vindo ao Terminal **");
-        System.out.println("1. Livro");
-        System.out.println("2. Filme");
-        System.out.println("3. Jogo");
-        System.out.println("4. Locadora");
-        System.out.println("5. Sair");
+        System.out.println("1. Locadora");
+        System.out.println("2. Sair");
         System.out.print("Escolha uma opção: ");
+
+        mostrar();
     }
 
     public void mostrar() {
@@ -54,19 +53,10 @@ public class TelaPrincipal {
             String opcao = leitor.nextLine();
 
             switch (opcao) {
-                case "1":
-                    MostrarmenuLivro();
-                    break;
-                case "2":
-                    MostrarmenuFilme();
-                    break;
-                case "3":
-                    MostrarmenuJogo();
-                    break;
-                case "4":
+               case "1":
                     MostrarmenuLocadora();
                     break;
-                case "5":
+                case "2":
                     System.out.println("Saindo do sistema");
                     leitor.close();
                     return;
@@ -85,7 +75,8 @@ public class TelaPrincipal {
         System.out.println("4. Menu Filme");
         System.out.println("5. Menu Jogo");
         System.out.println("6. Menu Cliente");
-        System.out.println("6. Sair");
+        System.out.println("7. Voltar ao menu anterior");
+        System.out.println("8. Sair");
         /*
          * Luis: Menu
          * ESSA WHILE VAMOS MODIFICANDO CONFORME A NECESSIDADE
@@ -103,25 +94,38 @@ public class TelaPrincipal {
                     break;
                 case "2":
                     System.out.println("----------------------------");
-                    System.out.println("     ADICIONAR FUNCIONARIOS");
+                    System.out.println("     MENU FUNCIONARIOS");
                     System.out.println("----------------------------");
                     AdicionarFuncionario();
                     break;
                 case "3":
                     System.out.println("----------------------------");
-                    System.out.println("       LISTAR LIVRO");
+                    System.out.println("       MENU LIVROS");
                     System.out.println("----------------------------");
-
+                    MostrarmenuLivro();
                     break;
                 case "4":
                     System.out.println("----------------------------");
-                    System.out.println("      DELETAR LIVROS");
+                    System.out.println("      MENU FILMES");
                     System.out.println("----------------------------");
+                    MostrarmenuFilme();
                     break;
                 case "5":
-                    menuPrinciapl();
+                    System.out.println("----------------------------");
+                    System.out.println("      MENU JOGOS");
+                    System.out.println("----------------------------");
+                    MostrarmenuJogo();
                     break;
                 case "6":
+                    System.out.println("----------------------------");
+                    System.out.println("      MENU CLIENTE");
+                    System.out.println("----------------------------");
+                    MostrarmenuCliente();
+                    break;
+                case "7":
+                    menuPrinciapl();
+                    break;
+                case "8":
                     System.out.println("Saindo do sistema...");
                     leitor.close();
                     controleLivro.salvarDados();
