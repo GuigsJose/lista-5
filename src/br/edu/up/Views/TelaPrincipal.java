@@ -48,12 +48,12 @@ public class TelaPrincipal {
 
     public void mostrar() {
         Scanner leitor = new Scanner(System.in);
-        
+
         while (true) {
             String opcao = leitor.nextLine();
 
             switch (opcao) {
-               case "1":
+                case "1":
                     MostrarmenuLocadora();
                     break;
                 case "2":
@@ -170,6 +170,8 @@ public class TelaPrincipal {
                     System.out.println("----------------------------");
                     System.out.println("     ATUALIZAR FUNCIONARIO");
                     System.out.println("----------------------------");
+                    Funcionario func = AdicionarFuncionario();
+                    funcionarioController.atualizarFuncionario(func);
                     MostrarmenuFuncionario();
                     break;
                 case "3":
@@ -185,7 +187,7 @@ public class TelaPrincipal {
                     MostrarmenuFuncionario();
                     break;
                 case "5":
-                    
+
                     funcionarioController.salvarDados();
                     locadoraController.AdicionarFuncionario(funcionarioController.listarFuncionarios());
                     MostrarmenuLocadora();
@@ -251,7 +253,7 @@ public class TelaPrincipal {
                     MostrarmenuCliente();
                     break;
                 case "5":
-                    
+
                     clienteController.salvarDados();
                     locadoraController.AdicionarClientes(clienteController.listarCliente());
                     MostrarmenuLocadora();
@@ -318,7 +320,7 @@ public class TelaPrincipal {
                     MostrarmenuLivro();
                     break;
                 case "5":
-                    
+
                     controleLivro.salvarDados();
                     locadoraController.AdicionarLivros(controleLivro.listarLivros());
                     MostrarmenuLocadora();
@@ -431,7 +433,7 @@ public class TelaPrincipal {
                     MostrarmenuFilme();
                     break;
                 case "5":
-                    
+
                     filmeController.salvarDados();
                     locadoraController.AdicionarFilmes(filmeController.listarFilmes());
                     MostrarmenuLocadora();
@@ -522,7 +524,7 @@ public class TelaPrincipal {
                     MostrarmenuJogo();
                     break;
                 case "5":
-                    
+
                     jogoController.salvarDados();
                     locadoraController.AdicionarJogos(jogoController.listarJogos());
                     MostrarmenuLocadora();
@@ -577,7 +579,7 @@ public class TelaPrincipal {
         jogoController.deletarJogo(id);
     }
 
-    public void AdicionarFuncionario() {
+    public Funcionario AdicionarFuncionario() {
         Scanner leitor = new Scanner(System.in);
 
         System.out.println("Informe o Documento: ");
@@ -607,6 +609,7 @@ public class TelaPrincipal {
 
         Funcionario funcionario = new Funcionario(documento, nome, idade, endereco, cargo, codigo);
         funcionarioController.incluirFuncionario(funcionario);
+        return funcionario;
     }
 
     public Cliente AdicionarCliente() {
