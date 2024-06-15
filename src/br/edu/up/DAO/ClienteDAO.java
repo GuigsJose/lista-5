@@ -14,7 +14,7 @@ import br.edu.up.Models.Enums.TipoCliente;
 
 public class ClienteDAO {
   private String header = "";
-  private String arquivo = "C:\\Java-Project\\lista-05\\Biblioteca\\src\\br\\edu\\up\\DAO\\Clientes.csv";
+  private String arquivo = "C:\\Users\\guize\\Desktop\\Faculdade\\lista-5-final\\lista-5\\src\\br\\edu\\up\\DAO\\Clientes.csv";
   List<Cliente> ListaClientes = new ArrayList<Cliente>();
 
   // READ lista todos os jogos

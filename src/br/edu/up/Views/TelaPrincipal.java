@@ -48,8 +48,8 @@ public class TelaPrincipal {
 
     public void mostrar() {
         Scanner leitor = new Scanner(System.in);
+        
         while (true) {
-            menuPrinciapl();
             String opcao = leitor.nextLine();
 
             switch (opcao) {
