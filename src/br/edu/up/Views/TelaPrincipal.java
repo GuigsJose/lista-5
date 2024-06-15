@@ -148,7 +148,7 @@ public class TelaPrincipal {
         System.out.println("2. Atualizar Funcionario");
         System.out.println("3. Listar Funcionario");
         System.out.println("4. Deletar Funcionario");
-        System.out.println("5. Voltar ao Menu Principal");
+        System.out.println("5. Voltar ao Menu anterior");
         System.out.println("6. Sair");
         /*
          * Luis: Menu
@@ -164,28 +164,31 @@ public class TelaPrincipal {
                     System.out.println("      ADICIONAR FUNCIONARIO");
                     System.out.println("----------------------------");
                     AdicionarFuncionario();
+                    MostrarmenuFuncionario();
                     break;
                 case "2":
                     System.out.println("----------------------------");
                     System.out.println("     ATUALIZAR FUNCIONARIO");
                     System.out.println("----------------------------");
-
+                    MostrarmenuFuncionario();
                     break;
                 case "3":
                     System.out.println("----------------------------");
                     System.out.println("       LISTAR FUNCIONARIO");
                     System.out.println("----------------------------");
-
+                    MostrarmenuFuncionario();
                     break;
                 case "4":
                     System.out.println("----------------------------");
                     System.out.println("      DELETAR FUNCIONARIO");
                     System.out.println("----------------------------");
+                    MostrarmenuFuncionario();
                     break;
                 case "5":
-                    menuPrinciapl();
+                    
                     funcionarioController.salvarDados();
                     locadoraController.AdicionarFuncionario(funcionarioController.listarFuncionarios());
+                    MostrarmenuLocadora();
                     break;
                 case "6":
                     System.out.println("Saindo do sistema...");
@@ -221,6 +224,7 @@ public class TelaPrincipal {
                     System.out.println("      ADICIONAR CLIENTE");
                     System.out.println("----------------------------");
                     AdicionarCliente();
+                    MostrarmenuCliente();
                     break;
                 case "2":
                     System.out.println("----------------------------");
@@ -228,12 +232,14 @@ public class TelaPrincipal {
                     System.out.println("----------------------------");
                     Cliente cliente = AdicionarCliente();
                     clienteController.atualizarCliente(cliente);
+                    MostrarmenuCliente();
                     break;
                 case "3":
                     System.out.println("----------------------------");
                     System.out.println("       LISTAR CLIENTE");
                     System.out.println("----------------------------");
                     clienteController.listarCliente();
+                    MostrarmenuCliente();
                     break;
                 case "4":
                     System.out.println("----------------------------");
@@ -242,11 +248,13 @@ public class TelaPrincipal {
                     System.out.println("Infome o código do cliente");
                     int codigo = leitor.nextInt();
                     clienteController.deletarCliente(codigo);
+                    MostrarmenuCliente();
                     break;
                 case "5":
-                    menuPrinciapl();
+                    
                     clienteController.salvarDados();
                     locadoraController.AdicionarClientes(clienteController.listarCliente());
+                    MostrarmenuLocadora();
                     break;
                 case "6":
                     System.out.println("Saindo do sistema...");
@@ -310,9 +318,10 @@ public class TelaPrincipal {
                     MostrarmenuLivro();
                     break;
                 case "5":
-                    menuPrinciapl();
+                    
                     controleLivro.salvarDados();
                     locadoraController.AdicionarLivros(controleLivro.listarLivros());
+                    MostrarmenuLocadora();
                     break;
                 case "6":
                     System.out.println("Saindo do sistema...");
@@ -395,6 +404,7 @@ public class TelaPrincipal {
                     System.out.println("      ADICIONAR FILME");
                     System.out.println("----------------------------");
                     incluirFilme();
+                    MostrarmenuFilme();
                     break;
                 case "2":
                     System.out.println("----------------------------");
@@ -402,12 +412,14 @@ public class TelaPrincipal {
                     System.out.println("----------------------------");
                     Filme filme = incluirFilme();
                     filmeController.atualizarFilme(filme);
+                    MostrarmenuFilme();
                     break;
                 case "3":
                     System.out.println("----------------------------");
                     System.out.println("       LISTAR FILME");
                     System.out.println("----------------------------");
                     filmeController.listarFilmes();
+                    MostrarmenuFilme();
                     break;
                 case "4":
                     System.out.println("----------------------------");
@@ -416,11 +428,13 @@ public class TelaPrincipal {
                     System.out.println("Informe o código do filme:");
                     int codigo = leitor.nextInt();
                     filmeController.deletarFilme(codigo);
+                    MostrarmenuFilme();
                     break;
                 case "5":
-                    menuPrinciapl();
+                    
                     filmeController.salvarDados();
                     locadoraController.AdicionarFilmes(filmeController.listarFilmes());
+                    MostrarmenuLocadora();
                     break;
                 case "6":
                     System.out.println("Saindo do sistema...");
@@ -483,7 +497,7 @@ public class TelaPrincipal {
                     System.out.println("      ADICIONAR JOGO");
                     System.out.println("----------------------------");
                     incluirJogo();
-
+                    MostrarmenuJogo();
                     break;
                 case "2":
                     System.out.println("----------------------------");
@@ -491,24 +505,27 @@ public class TelaPrincipal {
                     System.out.println("----------------------------");
                     Jogo jogo = incluirJogo();
                     jogoController.atualizarJogo(jogo);
-
+                    MostrarmenuJogo();
                     break;
                 case "3":
                     System.out.println("----------------------------");
                     System.out.println("       LISTAR JOGO");
                     System.out.println("----------------------------");
                     jogoController.listarJogos();
+                    MostrarmenuJogo();
                     break;
                 case "4":
                     System.out.println("----------------------------");
                     System.out.println("      DELETAR JOGOS");
                     System.out.println("----------------------------");
                     deletarJogo();
+                    MostrarmenuJogo();
                     break;
                 case "5":
-                    menuPrinciapl();
+                    
                     jogoController.salvarDados();
                     locadoraController.AdicionarJogos(jogoController.listarJogos());
+                    MostrarmenuLocadora();
                     break;
                 case "6":
                     System.out.println("Saindo do sistema...");
