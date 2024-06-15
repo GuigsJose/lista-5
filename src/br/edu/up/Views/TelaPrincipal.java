@@ -91,36 +91,42 @@ public class TelaPrincipal {
                     System.out.println("      CRIAR LOCADORA");
                     System.out.println("----------------------------");
                     CriarLocadora();
+                    MostrarmenuLocadora();
                     break;
                 case "2":
                     System.out.println("----------------------------");
                     System.out.println("     MENU FUNCIONARIOS");
                     System.out.println("----------------------------");
-                    AdicionarFuncionario();
+                    MostrarmenuFuncionario();
+                    MostrarmenuLocadora();
                     break;
                 case "3":
                     System.out.println("----------------------------");
                     System.out.println("       MENU LIVROS");
                     System.out.println("----------------------------");
                     MostrarmenuLivro();
+                    MostrarmenuLocadora();
                     break;
                 case "4":
                     System.out.println("----------------------------");
                     System.out.println("      MENU FILMES");
                     System.out.println("----------------------------");
                     MostrarmenuFilme();
+                    MostrarmenuLocadora();
                     break;
                 case "5":
                     System.out.println("----------------------------");
                     System.out.println("      MENU JOGOS");
                     System.out.println("----------------------------");
                     MostrarmenuJogo();
+                    MostrarmenuLocadora();
                     break;
                 case "6":
                     System.out.println("----------------------------");
                     System.out.println("      MENU CLIENTE");
                     System.out.println("----------------------------");
                     MostrarmenuCliente();
+                    MostrarmenuLocadora();
                     break;
                 case "7":
                     menuPrinciapl();
@@ -276,6 +282,7 @@ public class TelaPrincipal {
                     System.out.println("      ADICIONAR LIVRO");
                     System.out.println("----------------------------");
                     incluirLivro();
+                    MostrarmenuLivro();
 
                     break;
                 case "2":
@@ -284,12 +291,14 @@ public class TelaPrincipal {
                     System.out.println("----------------------------");
                     Livro livro = incluirLivro();
                     controleLivro.atualizarLivro(livro);
+                    MostrarmenuLivro();
                     break;
                 case "3":
                     System.out.println("----------------------------");
                     System.out.println("       LISTAR LIVRO");
                     System.out.println("----------------------------");
                     controleLivro.listarLivros();
+                    MostrarmenuLivro();
                     break;
                 case "4":
                     System.out.println("----------------------------");
@@ -298,6 +307,7 @@ public class TelaPrincipal {
                     System.out.println("Informe o codigo do livro:");
                     int codigo = leitor.nextInt();
                     controleLivro.deletarLivro(codigo);
+                    MostrarmenuLivro();
                     break;
                 case "5":
                     menuPrinciapl();
